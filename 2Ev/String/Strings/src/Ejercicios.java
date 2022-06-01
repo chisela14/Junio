@@ -23,9 +23,10 @@ public class Ejercicios {
 		//6
 		System.out.println("Ejercicio 6");
 		System.out.println(encontrarPalabra("shybaoxlna","hola"));
+		System.out.println(encontrarPalabra("shybaoxlna","holm"));
 		//7
 		System.out.println("Ejercicio 7");
-		System.out.println(cambiarPalabra("El perro bonito", "perro", "gato"));
+		System.out.println(cambiarPalabra("El perro bonito", "perro", "armario"));
 		System.out.println(cambiarPalabra("El pez bonito", "perro", "gato"));
 		//8
 		System.out.println("Ejercicio 8");
@@ -36,6 +37,8 @@ public class Ejercicios {
 		//10
 		System.out.println("Ejercicio 10");
 		System.out.println(numPalabras("He estudiado mucho"));
+		System.out.println(numPalabras(" He estudiado  mucho "));
+		System.out.println(numPalabras("  He  estudiado   mucho  "));
 		
 	}
 		
@@ -136,7 +139,7 @@ public class Ejercicios {
 				encontrado = true;
 			}
 			else {
-				encontrado = false;
+				return encontrado = false;
 			}
 		}
 		return encontrado;
@@ -145,16 +148,36 @@ public class Ejercicios {
 	7. Diseñar una función que reciba como parámetro tres cadenas, la primera será una frase y
 	deberá buscar si existe la palabra que recibe como segundo parámetro y reemplazarla por la
 	tercera.
-	*/
+	*/   		
 	public static String cambiarPalabra(String frase, String palabra, String reemplazar) {
 		String resultado;
+		//comprobar que existe la palabra
 		int posPalabra = frase.indexOf(palabra);
+		//si se encuentra la palabra se creará una nueva cadena
 		if (posPalabra != -1) {
-			resultado = frase.replace(palabra, reemplazar);
+			resultado = "";
+			//contador valor de la palabra a reemplazar(else if)
+			int valorReemplazar = 0;
+			//diferencia de longitud entre la palabray el reemplazo
+			int diferencia = Math.abs(palabra.length() - reemplazar.length());
+			for (int i=0; i<frase.length()+diferencia; i++) {
+				//añadir la frase a la nueva cadena hasta la posicion en la que se encuentra la palabra
+				if (i<posPalabra) {
+					resultado = resultado + frase.charAt(i);
+				}
+				//en la posicion en la que se encuentra la palabra se añade el reemplazo
+				else if (i>= posPalabra && i< (posPalabra+reemplazar.length())) {
+					resultado = resultado + reemplazar.charAt(valorReemplazar);
+					valorReemplazar ++;
+				}
+				//después del reemplazo se añade la frase
+				else {
+					resultado = resultado + frase.charAt(i-diferencia);
+				}
+			}
 		}else {
 			resultado = "No se ha podido reemplazar, la palabra no está en la frase.";
 		}
-		
 		return resultado;
 	}
 	/*
@@ -174,7 +197,6 @@ public class Ejercicios {
 			}
 		}
 		return resultado;
-		
 	}
 	/*
 	9. Crear una función que, tomando una cadena de texto como entrada, construya y devuelva
@@ -218,15 +240,21 @@ public class Ejercicios {
 		int resultado = 0;
 		String palabra = "";
 		for (int i=0;i<cadena.length();i++) {
-			if (cadena.charAt(i)!= ' ') {
+			//compruebo si el caracter es un espacio o no
+			if(cadena.charAt(i)== ' ') {
+				//si la palabra no esta vacia sumo y reseteo
+				if (palabra.isEmpty()==false) {
+					resultado ++;
+					palabra = "";
+				}
+			}else {
+				//si el caracter no es un espacio empiezo una palabra
 				palabra = palabra + cadena.charAt(i);
 			}
-			else {
-				resultado ++;
-				palabra = "";
-			}
 		}
-		resultado ++;
+		if (cadena.charAt(cadena.length()-1)!= ' ') {
+			resultado ++;
+		}
 		return resultado;
 	}
 }
