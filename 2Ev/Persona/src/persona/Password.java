@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Password {
 	private final int LONGITUD;
-	private String contrasenna;
+	private StringBuilder contrasenna;
 	
 	public Password() {
 		this.LONGITUD = 8;
@@ -16,13 +16,13 @@ public class Password {
 		this.contrasenna = generarPassword();
 	}
 	
-	public String generarPassword() {
-		String password = "";
+	public StringBuilder generarPassword() {
+		StringBuilder password = new StringBuilder(this.LONGITUD);
 		String alfabeto = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";//61
 		Random r = new Random();
 		for (int i=0; i<this.LONGITUD; i++) {
 			int posicion = r.nextInt(61)+1;
-			password = password + alfabeto.charAt(posicion);
+			password = password.append(alfabeto.charAt(posicion));
 		}
 		return password;
 	}
@@ -51,12 +51,12 @@ public class Password {
 		return LONGITUD;
 	}
 
-	public String getPassword() {
+	public StringBuilder getPassword() {
 		return contrasenna;
 	}
 	
 	//genero este para crear una contraseña fuerte para probar el método
-	public void setPassword(String contrasenna) {
+	public void setPassword(StringBuilder contrasenna) {
 		this.contrasenna = contrasenna;
 	}
 

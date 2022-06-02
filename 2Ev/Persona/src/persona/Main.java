@@ -33,10 +33,16 @@ public class Main {
 		Password passwd3 = p3.getPassword();
 		System.out.println(passwd3.toString());
 		System.out.println(passwd3.esFuerte());
-		Password fuerte = new Password(11);
-		fuerte.setPassword("123456aaAAA");
-		System.out.println(fuerte);
-		System.out.println(fuerte.esFuerte());
+		//como introduzco entre parentesis el valor que he introducido al inicializarla para
+		//que sea similar a lo que estaba
+		//Password fuerte = new Password(11);
+		//fuerte.setPassword("123456aaAAA");
+		//System.out.println(fuerte.esFuerte());
+		Password pruebaFuerte = new Password(11);
+		StringBuilder fuerte = new StringBuilder("123456aaAAA");
+		pruebaFuerte.setPassword(fuerte);
+		System.out.println(pruebaFuerte);
+		System.out.println(pruebaFuerte.esFuerte());
 	}
 
 }
