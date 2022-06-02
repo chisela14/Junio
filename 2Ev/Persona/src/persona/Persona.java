@@ -11,11 +11,13 @@ public class Persona {
 	private char sexo;
 	private double peso;
 	private double altura;
+	private final int LIMITEINFERIOR = 20;
+	private final int LIMITESUPERIOR = 20;
 	
 	public Persona() {
 		super();
 		this.nombre = "";
-		this.edad = 0;//no s� si puedo poner valores num�ricos vac�os as� que lo pongo a 0
+		this.edad = 0;
 		this.dni = generaDni();
 		this.password = new Password();
 		this.sexo = 'M';
@@ -46,7 +48,7 @@ public class Persona {
 	}
 
 	//generar 8 números y una letra mayúscula
-	public String generaDni() {
+	private String generaDni() {
 		String dni = "";
 		Random r = new Random();
 		String mayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -58,16 +60,16 @@ public class Persona {
 		dni = dni + mayus.charAt(posicion);
 		return dni;
 	}
-	//constantes para qué?
+	
 	public int calcularIMC() {
 		int resultado;
 		double imc;
 		//calcular imc
 		imc = this.peso/(Math.pow(this.altura,2));
 		//calcular resultado
-		if (imc<20) {
+		if (imc<LIMITEINFERIOR) {
 			resultado = -1;
-		}else if (imc>=20 && imc<=25) {
+		}else if (imc>=LIMITEINFERIOR && imc<=LIMITESUPERIOR) {
 			resultado = 0;
 		}else {
 			resultado = 1;
@@ -86,11 +88,9 @@ public class Persona {
 	}
 	
 	public boolean comprobarSexo(char sexo) {
-		boolean resultado;
+		boolean resultado = false;
 		if(sexo==this.sexo) {
 			resultado = true;
-		}else {
-			resultado = false;
 		}
 		return resultado;
 	}
