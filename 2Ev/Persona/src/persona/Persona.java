@@ -8,25 +8,23 @@ public class Persona {
 	private int edad;
 	private String dni;
 	private Password password;
-	private char sexo;
+	private Sexo sexo;
 	private double peso;
 	private double altura;
 	private final int LIMITEINFERIOR = 20;
 	private final int LIMITESUPERIOR = 20;
 	
 	public Persona() {
-		super();
 		this.nombre = "";
 		this.edad = 0;
 		this.dni = generaDni();
 		this.password = new Password();
-		this.sexo = 'M';
+		this.sexo = Sexo.M;
 		this.peso = 0;
 		this.altura = 0;
 	}
 	
-	public Persona(String nombre, int edad, char sexo) {
-		super();
+	public Persona(String nombre, int edad, Sexo sexo) {
 		this.nombre = nombre;
 		this.edad = edad;
 		this.sexo = sexo;
@@ -36,7 +34,7 @@ public class Persona {
 		this.altura = 0;
 	}
 
-	public Persona(String nombre, int edad, String dni, char sexo, double peso, double altura) {
+	public Persona(String nombre, int edad, String dni, Sexo sexo, double peso, double altura) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;
@@ -47,7 +45,6 @@ public class Persona {
 		this.password = new Password();
 	}
 
-	//generar 8 números y una letra mayúscula
 	private String generaDni() {
 		String dni = "";
 		Random r = new Random();
@@ -87,7 +84,7 @@ public class Persona {
 		return resultado;
 	}
 	
-	public boolean comprobarSexo(char sexo) {
+	public boolean comprobarSexo(Sexo sexo) {
 		boolean resultado = false;
 		if(sexo==this.sexo) {
 			resultado = true;
@@ -119,11 +116,11 @@ public class Persona {
 		this.password = password;
 	}
 
-	public char getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(char sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 

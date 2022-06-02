@@ -3,26 +3,24 @@ package persona;
 import java.util.Random;
 
 public class Password {
-	private int longitud;
+	private final int LONGITUD;
 	private String contrasenna;
 	
 	public Password() {
-		super();
-		this.longitud = 8;
+		this.LONGITUD = 8;
 		this.contrasenna = generarPassword();
 	}
 
 	public Password(int longitud) {
-		super();
-		this.longitud = longitud;
+		this.LONGITUD = longitud;
 		this.contrasenna = generarPassword();
 	}
 	
 	public String generarPassword() {
 		String password = "";
 		String alfabeto = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";//61
-		for (int i=0; i<this.longitud; i++) {
-			Random r = new Random();
+		Random r = new Random();
+		for (int i=0; i<this.LONGITUD; i++) {
 			int posicion = r.nextInt(61)+1;
 			password = password + alfabeto.charAt(posicion);
 		}
@@ -50,7 +48,7 @@ public class Password {
 	}
 
 	public int getLongitud() {
-		return longitud;
+		return LONGITUD;
 	}
 
 	public String getPassword() {

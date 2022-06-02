@@ -133,17 +133,17 @@ public class Ejercicios {
 	encontrará y deberá devolver True, en caso contrario deberá devolver False.
 	*/
 	public static boolean encontrarPalabra(String cadena, String palabra) {
-		boolean encontrado = false;
-		for (int i=0; i<palabra.length(); i++) {
-			if (cadena.indexOf(palabra.charAt(i))!= -1) {
-				encontrado = true;
+		boolean encontrado = true;
+		int contador = 0;
+		while (encontrado == true && contador != palabra.length()) {
+			if (cadena.indexOf(palabra.charAt(contador))== -1) {
+				encontrado = false;
 			}
-			else {
-				return encontrado = false;
-			}
+			contador ++;
 		}
 		return encontrado;
 	}
+	
 	/*
 	7. Diseñar una función que reciba como parámetro tres cadenas, la primera será una frase y
 	deberá buscar si existe la palabra que recibe como segundo parámetro y reemplazarla por la
