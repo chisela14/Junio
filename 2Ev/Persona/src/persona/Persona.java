@@ -1,5 +1,8 @@
 package persona;
 
+import java.util.Objects;
+import java.util.Random;
+
 public class Persona {
 	private String nombre;
 	private int edad;
@@ -12,8 +15,8 @@ public class Persona {
 	public Persona() {
 		super();
 		this.nombre = "";
-		this.edad = 0;//no sé si puedo poner valores numéricos vacíos así que lo pongo a 0
-		this.dni = generarDni();
+		this.edad = 0;//no sï¿½ si puedo poner valores numï¿½ricos vacï¿½os asï¿½ que lo pongo a 0
+		this.dni = generaDni();
 		this.password = new Password();
 		this.sexo = 'M';
 		this.peso = 0;
@@ -25,7 +28,7 @@ public class Persona {
 		this.nombre = nombre;
 		this.edad = edad;
 		this.sexo = sexo;
-		this.dni = generarDni();
+		this.dni = generaDni();
 		this.password = new Password();
 		this.peso = 0;
 		this.altura = 0;
@@ -42,9 +45,130 @@ public class Persona {
 		this.password = new Password();
 	}
 
-
-	public String generarDni() {
-		
+	//generar 8 nÃºmeros y una letra mayÃºscula
+	public String generaDni() {
+		String dni = "";
+		Random r = new Random();
+		String mayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		for (int i=0; i<8; i++) {
+			int num = r.nextInt(8)+1;
+			dni = dni + num;
+		}
+		int posicion = r.nextInt(26)+1;
+		dni = dni + mayus.charAt(posicion);
+		return dni;
 	}
+	//constantes para quÃ©?
+	public int calcularIMC() {
+		int resultado;
+		double imc;
+		//calcular imc
+		imc = this.peso/(Math.pow(this.altura,2));
+		//calcular resultado
+		if (imc<20) {
+			resultado = -1;
+		}else if (imc>=20 && imc<=25) {
+			resultado = 0;
+		}else {
+			resultado = 1;
+		}
+		return resultado;
+	}
+	
+	public boolean esMayorDeEdad() {
+		boolean resultado;
+		if(this.edad>17) {
+			resultado = true;
+		}else {
+			resultado = false;
+		}
+		return resultado;
+	}
+	
+	public boolean comprobarSexo(char sexo) {
+		boolean resultado;
+		if(sexo==this.sexo) {
+			resultado = true;
+		}else {
+			resultado = false;
+		}
+		return resultado;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public Password getPassword() {
+		return password;
+	}
+
+	public void setPassword(Password password) {
+		this.password = password;
+	}
+
+	public char getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(char sexo) {
+		this.sexo = sexo;
+	}
+
+	public double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(double peso) {
+		this.peso = peso;
+	}
+
+	public double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", edad=" + edad + ", dni=" + dni + ", password=" + password + ", sexo="
+				+ sexo + ", peso=" + peso + ", altura=" + altura + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dni);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Persona other = (Persona) obj;
+		return Objects.equals(dni, other.dni);
+	}
+	
 	
 }
