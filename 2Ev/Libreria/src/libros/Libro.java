@@ -55,15 +55,15 @@ public class Libro {
 		 return isbn;
 	 }
 	
-	protected int diasEntreEdiciones(Libro l2) {
-		return Math.abs(this.fechaEdicion.getDayOfYear() - l2.getFechaEdicion().getDayOfYear());
+	public int diasEntreEdiciones(Libro l1) {
+		return Math.abs(this.fechaEdicion.getDayOfYear() - l1.getFechaEdicion().getDayOfYear());
 	}
 
 	protected String getEditorial() {
 		return editorial;
 	}
 
-	protected void setEditorial(String editorial) {
+	public void setEditorial(String editorial) {
 		this.editorial = editorial;
 	}
 
@@ -71,7 +71,7 @@ public class Libro {
 		return fechaEdicion;
 	}
 
-	protected void setFechaEdicion(LocalDate fechaEdicion) {
+	public void setFechaEdicion(LocalDate fechaEdicion) {
 		this.fechaEdicion = fechaEdicion;
 	}
 
@@ -110,7 +110,7 @@ public class Libro {
 
 	@Override
 	public String toString() {
-		return "Libro: " + titulo + ". Autor: " + autor + ". ISBN: " + ISBN + ". Código: " + CODIGO + ".";
+		return "Libro: " + titulo + ". Autor: " + autor + ". ISBN: " + ISBN + ". Codigo: " + CODIGO + ".";
 	}
 	
 	

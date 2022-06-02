@@ -2,15 +2,15 @@ package libros;
 
 public class LibroPapel extends Libro {
 	private double peso;
-	private int precio;
+	private double precio;
 	
-	public LibroPapel(String titulo, String autor, double peso, int precio) {
+	public LibroPapel(String titulo, String autor, double peso, double precio) {
 		super(titulo, autor);
 		this.peso = peso;
 		this.precio = precio;
 	}
 
-	public LibroPapel(String titulo, String autor, String editorial, double peso, int precio) {
+	public LibroPapel(String titulo, String autor, String editorial, double peso, double precio) {
 		super(titulo, autor, editorial);
 		this.peso = peso;
 		this.precio = precio;
@@ -28,7 +28,7 @@ public class LibroPapel extends Libro {
 		return peso;
 	}
 
-	public int getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 	

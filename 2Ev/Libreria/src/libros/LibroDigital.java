@@ -1,16 +1,16 @@
 package libros;
 
 public class LibroDigital extends Libro {
-	private int precio;
-	private String formato;
+	private double precio;
+	private Formato formato;
 	
-	public LibroDigital(String titulo, String autor, int precio, String formato) throws LibroException {
+	public LibroDigital(String titulo, String autor, double precio, Formato formato) throws LibroException {
 		super(titulo, autor);
 		this.precio = precio;
 		this.formato = formato;
 	}
 
-	public LibroDigital(String titulo, String autor, String editorial, int precio, String formato) throws LibroException  {
+	public LibroDigital(String titulo, String autor, String editorial, double precio, Formato formato) throws LibroException  {
 		super(titulo, autor, editorial);
 		this.precio = precio;
 		this.formato = formato;
@@ -24,17 +24,17 @@ public class LibroDigital extends Libro {
 		return resultado;
 	}
 
-	public int getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
-	public String getFormato() {
+	public Formato getFormato() {
 		return formato;
 	}
 	
 	@Override
 	public String toString() {
-		return "Libro: " + titulo + ". Autor: " + autor + ". ISBN: " + ISBN + ". Código: " + CODIGO + ". Precio: " + precio + ". Formato: " + formato + ".";
+		return "Libro: " + titulo + ". Autor: " + autor + ". ISBN: " + ISBN + ". Codigo: " + CODIGO + ". Precio: " + precio + ". Formato: " + formato + ".";
 	}
 	
 	
