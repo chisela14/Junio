@@ -8,22 +8,25 @@ public class NotaAlarma extends Nota implements Activable{
 	private int minutosRepetir;
 	private boolean activado;
 	
-	public NotaAlarma(String texto, LocalDateTime fechaAlarma, boolean activado) {
+	public NotaAlarma(String texto, LocalDateTime fechaAlarma, boolean activado) throws NotaAlarmaException {
 		super(texto);
-		this.fechaAlarma = fechaAlarma;
+		setFechaAlarma(fechaAlarma);
 		this.activado = activado;
 	}
 
-	public NotaAlarma(String texto, LocalDateTime fechaAlarma, int minutosRepetir) {
+	public NotaAlarma(String texto, LocalDateTime fechaAlarma, int minutosRepetir) throws NotaAlarmaException {
 		super(texto);
-		this.fechaAlarma = fechaAlarma;
+		setFechaAlarma(fechaAlarma);
 		this.minutosRepetir = minutosRepetir;
 		this.activado = true;
 	}
-	
-	//setfechaAlarma
-	public void setFechaAlarma(LocalDateTime fechaAlarma) {
-		this.fechaAlarma = fechaAlarma;
+
+	private void setFechaAlarma(LocalDateTime fechaAlarma) throws NotaAlarmaException {
+		try {
+			this.fechaAlarma = fechaAlarma;
+		}catch (Exception e) {
+			throw new NotaAlarmaException("La fecha y hora introducida no puede ser menor a la fecha y hora actual");
+		}
 	}
 	
 	public static int getMinutosRepetirPorDefecto() {

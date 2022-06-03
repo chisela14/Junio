@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Nota implements Comparable<Nota>{
-	
+	//TILDES: PROJECT, RESOURCE, INHERIT FROM CONTAINER MARCADO
 	private static int codigoSiguiente;
 	private int codigo;
 	private String texto;
@@ -88,11 +88,23 @@ public class Nota implements Comparable<Nota>{
 		return "Nota [codigo=" + codigo + ", texto=" + texto + ", fechaCreacion=" + fechaCreacion
 				+ ", fechaUltimaModificacion=" + fechaUltimaModificacion + "]";
 	}
-
+	
+	/**
+	 * comparar según su fecha de ultima modificación 
+	 * @return 1 si la fecha de la última modificación es posterior a la de la introducida por parámetro
+	 * @return -1 si la fecha de la última modificación es anterior a la de la introducida por parámetro
+	 * @return 0 si se han modificado por última vez a la misma fecha y hora
+	 */
 	@Override
 	public int compareTo(Nota o) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (this.fechaUltimaModificacion.isAfter(o.getFechaModificacion())) {
+			return 1;
+		}else if(this.fechaUltimaModificacion.isBefore(o.getFechaModificacion())) {
+			return -1;
+		}else {
+			return 0;
+		}
+		
 	}
 
 
