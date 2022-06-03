@@ -18,9 +18,17 @@ public class NotaAlarma extends Nota implements Activable{
 		super(texto);
 		this.fechaAlarma = fechaAlarma;
 		this.minutosRepetir = minutosRepetir;
+		this.activado = true;
 	}
 	
 	//setfechaAlarma
+	public void setFechaAlarma(LocalDateTime fechaAlarma) {
+		this.fechaAlarma = fechaAlarma;
+	}
+	
+	public static int getMinutosRepetirPorDefecto() {
+		return MINUTOS_REPETIR_POR_DEFECTO;
+	}
 
 	@Override
 	public void activar() {
@@ -33,4 +41,16 @@ public class NotaAlarma extends Nota implements Activable{
 		this.activado = false;
 		
 	}
+
+	public boolean isActivado() {
+		return activado;
+	}
+
+	@Override
+	public String toString() {
+		return "NotaAlarma [fechaAlarma=" + fechaAlarma + ", minutosRepetir=" + minutosRepetir + ", activado="
+				+ activado + "]";
+	}
+	
+	
 }

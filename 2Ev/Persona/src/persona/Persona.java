@@ -46,16 +46,16 @@ public class Persona {
 	}
 
 	private String generaDni() {
-		String dni = "";
+		StringBuilder dni = new StringBuilder(9);
 		Random r = new Random();
 		String mayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		for (int i=0; i<8; i++) {
 			int num = r.nextInt(8)+1;
-			dni = dni + num;
+			dni.append(num);
 		}
 		int posicion = r.nextInt(26)+1;
-		dni = dni + mayus.charAt(posicion);
-		return dni;
+		dni.append(mayus.charAt(posicion));
+		return dni.toString();
 	}
 	
 	public int calcularIMC() {

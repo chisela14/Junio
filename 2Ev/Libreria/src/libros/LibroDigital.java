@@ -4,13 +4,13 @@ public class LibroDigital extends Libro {
 	private double precio;
 	private Formato formato;
 	
-	public LibroDigital(String titulo, String autor, double precio, Formato formato) throws LibroException {
+	public LibroDigital(String titulo, String autor, double precio, Formato formato) {
 		super(titulo, autor);
 		this.precio = precio;
 		this.formato = formato;
 	}
 
-	public LibroDigital(String titulo, String autor, String editorial, double precio, Formato formato) throws LibroException  {
+	public LibroDigital(String titulo, String autor, String editorial, double precio, Formato formato) {
 		super(titulo, autor, editorial);
 		this.precio = precio;
 		this.formato = formato;

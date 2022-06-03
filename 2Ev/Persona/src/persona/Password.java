@@ -3,28 +3,31 @@ package persona;
 import java.util.Random;
 
 public class Password {
-	private final int LONGITUD;
-	private StringBuilder contrasenna;
+	private static final int LONGITUD = 8;
+	private int longitud;
+	//a la hora de guardar un atributo que no va a cambiar mucho mejor String
+	private String contrasenna;
 	
 	public Password() {
-		this.LONGITUD = 8;
+		this.longitud = LONGITUD;
 		this.contrasenna = generarPassword();
 	}
 
 	public Password(int longitud) {
-		this.LONGITUD = longitud;
+		this.longitud = longitud;
 		this.contrasenna = generarPassword();
 	}
 	
-	public StringBuilder generarPassword() {
-		StringBuilder password = new StringBuilder(this.LONGITUD);
+	public String generarPassword() {
+		StringBuilder password = new StringBuilder(this.longitud);
 		String alfabeto = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";//61
 		Random r = new Random();
-		for (int i=0; i<this.LONGITUD; i++) {
+		for (int i=0; i<this.longitud; i++) {
 			int posicion = r.nextInt(61)+1;
-			password = password.append(alfabeto.charAt(posicion));
+			//Stringbuilder es mutable, no hace falta asignarlo
+			password.append(alfabeto.charAt(posicion));
 		}
-		return password;
+		return password.toString();
 	}
 	
 	public boolean esFuerte() {
@@ -48,15 +51,15 @@ public class Password {
 	}
 
 	public int getLongitud() {
-		return LONGITUD;
+		return longitud;
 	}
 
-	public StringBuilder getPassword() {
+	public String getPassword() {
 		return contrasenna;
 	}
 	
 	//genero este para crear una contraseña fuerte para probar el método
-	public void setPassword(StringBuilder contrasenna) {
+	public void setPassword(String contrasenna) {
 		this.contrasenna = contrasenna;
 	}
 
