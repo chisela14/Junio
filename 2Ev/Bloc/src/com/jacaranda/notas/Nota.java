@@ -4,14 +4,18 @@ import java.util.Objects;
 
 public class Nota implements Comparable<Nota>{
 	//TILDES: PROJECT, RESOURCE, INHERIT FROM CONTAINER MARCADO
-	private static int codigoSiguiente;
-	private int codigo;
+	private static int codigoSiguiente = 1;
+	private final int CODIGO;
 	private String texto;
 	private LocalDateTime fechaCreacion; 
 	private LocalDateTime fechaUltimaModificacion;
 	
 	public Nota(String texto) {
 		this.texto = texto;
+		this.CODIGO = this.codigoSiguiente;
+		this.codigoSiguiente ++;
+		this.fechaCreacion = LocalDateTime.now();
+		this.fechaUltimaModificacion = LocalDateTime.now();
 	}
 
 	public String getTexto() {
@@ -23,7 +27,7 @@ public class Nota implements Comparable<Nota>{
 	}
 
 	public int getCodigo() {
-		return codigo;
+		return CODIGO;
 	}
 
 	public LocalDateTime getFechaCreacion() {
@@ -85,7 +89,7 @@ public class Nota implements Comparable<Nota>{
 
 	@Override
 	public String toString() {
-		return "Nota [codigo=" + codigo + ", texto=" + texto + ", fechaCreacion=" + fechaCreacion
+		return "Nota [codigo=" + CODIGO + ", texto=" + texto + ", fechaCreacion=" + fechaCreacion
 				+ ", fechaUltimaModificacion=" + fechaUltimaModificacion + "]";
 	}
 	
@@ -97,13 +101,13 @@ public class Nota implements Comparable<Nota>{
 	 */
 	@Override
 	public int compareTo(Nota o) {
+		int resultado = 0;
 		if (this.fechaUltimaModificacion.isAfter(o.getFechaModificacion())) {
-			return 1;
+			resultado = 1;
 		}else if(this.fechaUltimaModificacion.isBefore(o.getFechaModificacion())) {
-			return -1;
-		}else {
-			return 0;
+			resultado = -1;
 		}
+		return resultado;
 		
 	}
 

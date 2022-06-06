@@ -21,14 +21,28 @@ public class Main {
 			NotaAlarma na2 = new NotaAlarma("alarma2",LocalDateTime.now().plusHours(1),10);//texto, fecha alarma, minutos repetir
 			
 			//metodos bloc
+			System.out.println(b1.getNumNotas());
 			b1.annadirNota(n1);
 			b1.annadirNota(n2);
-			System.out.println(b1.getNotas());
-			System.out.println(b1.getNota(0));
+			System.out.println(b1.toString());
+			System.out.println(b1.listarNotas());
 			System.out.println(b1.getNumNotas());
 			b1.eliminarNota(0);
 			System.out.println(b1.getNumNotas());
-			System.out.println(b1.getNotas());
+			b1.annadirNota(na1);
+			b1.annadirNota(na2);
+			System.out.println(b1.listarNotas());
+			System.out.println(b1.ordenarBloc());
+			
+			//activar desactivar
+			//b1.activa(0);
+			//b1.activa(1);
+			b1.desactiva(1);
+			System.out.println(b1.getNota(1));
+			//b1.desactiva(0);
+			b1.desactiva(1);
+			
+			
 	}
 
 }
