@@ -12,6 +12,7 @@ public class NotaAlarma extends Nota implements Activable{
 		super(texto);
 		setFechaAlarma(fechaAlarma);
 		this.activado = activado;
+		this.minutosRepetir = MINUTOS_REPETIR_POR_DEFECTO;
 	}
 
 	public NotaAlarma(String texto, LocalDateTime fechaAlarma, int minutosRepetir) throws NotaAlarmaException {

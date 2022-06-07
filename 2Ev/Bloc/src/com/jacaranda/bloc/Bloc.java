@@ -30,16 +30,14 @@ public class Bloc {
 	}
 	
 	public void eliminarNota (int posicion) {
-		Nota[] nuevoArray = new Nota[notas.length -1];
 		for(int i=0; i<this.numNotas; i++) {
-			if(i!=posicion) {
-				nuevoArray[i]=notas[i];
-			}else {
-				nuevoArray[i]=notas[i + 1];
+			if(i<posicion) {
+				notas[i]=notas[i];
+			}else if (i>posicion) {
+				notas[i-1]=notas[i];
 			}
 		}
 		this.numNotas --;
-		this.notas = nuevoArray;
 	}
 	
 	public String listarNotas() {
@@ -55,45 +53,66 @@ public class Bloc {
 	}
 	
 	//uml
-	public String getNota(int posicion) {
-		return notas[posicion].toString();
+	public String getNota(int posicion) throws BlocException {
+		if (notas[posicion]!= null) {
+			return notas[posicion].toString();
+		}else {
+			throw new BlocException("La nota no existe");
+		}
+		
 	}
 	
-	public void updateNota(int posicion, String texto) {
+	public void updateNota(int posicion, String texto) throws BlocException {
 		Nota nota = notas[posicion];
-		nota.setTexto(texto);
+		if (nota != null) {
+			nota.setTexto(texto);
+		}else {
+			throw new BlocException("La nota no existe");
+		}
+		
 	}
 	
 	public void activa(int posicion) throws BlocException {
-		//comprobar si es nota o notaAlarma
-		if (notas[posicion]instanceof NotaAlarma ) {
-			NotaAlarma nota = (NotaAlarma)notas[posicion];
-			//si la nota esta activada lanza exception
-			if(nota.isActivado() == true) {
-				throw new BlocException("La nota ya está activada");
-			}else {
-				nota.activar();
+		if (notas[posicion]!= null) {
+			//comprobar si es nota o notaAlarma
+			if (notas[posicion]instanceof NotaAlarma ) {
+				NotaAlarma nota = (NotaAlarma)notas[posicion];
+				//si la nota esta activada lanza exception
+				if(nota.isActivado() == true) {
+					throw new BlocException("La nota ya está activada");
+				}else {
+					nota.activar();
+				}
 			}
+			else {
+				throw new BlocException("No se puede activar una nota normal");
+			}
+		}else {
+			throw new BlocException("La nota no existe");
 		}
-		else {
-			throw new BlocException("No se puede activar una nota normal");
-		}
+		
 	}
 	
 	public void desactiva(int posicion) throws BlocException {
-		//comprobar si es nota o notaAlarma
-		if (notas[posicion]instanceof NotaAlarma) {
-			NotaAlarma nota = (NotaAlarma)notas[posicion];
-			//si la nota esta desactivada lanza exception
-			if(nota.isActivado() == false) {
-				throw new BlocException("La nota ya está desactivada");
-			}else {
-				nota.desactivar();
+		if (notas[posicion]!= null) {
+			//comprobar si es nota o notaAlarma
+			if (notas[posicion]instanceof NotaAlarma) {
+				NotaAlarma nota = (NotaAlarma)notas[posicion];
+				//si la nota esta desactivada lanza exception
+				if(nota.isActivado() == false) {
+					throw new BlocException("La nota ya está desactivada");
+				}else {
+					nota.desactivar();
+				}
 			}
+			else {
+				throw new BlocException("No se puede desactivar una nota normal");
+			}
+		}else {
+			throw new BlocException("La nota no existe");
 		}
-		else {
-			throw new BlocException("No se puede desactivar una nota normal");
-		}
+		
+		
 	}
 	
 	public static int getNumeroNotasMaximo() {

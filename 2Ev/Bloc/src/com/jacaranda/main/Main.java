@@ -27,10 +27,10 @@ public class Main {
 			System.out.println(b1.toString());
 			System.out.println(b1.listarNotas());
 			System.out.println(b1.getNumNotas());
-			b1.eliminarNota(0);
-			System.out.println(b1.getNumNotas());
 			b1.annadirNota(na1);
 			b1.annadirNota(na2);
+			b1.eliminarNota(3);
+			System.out.println(b1.getNumNotas());
 			System.out.println(b1.listarNotas());
 			System.out.println(b1.ordenarBloc());
 			
