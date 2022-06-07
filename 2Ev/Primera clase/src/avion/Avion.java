@@ -1,5 +1,7 @@
 package avion;
 
+import java.util.Objects;
+
 public class Avion {
 
 	private String idAvion;
@@ -69,12 +71,11 @@ public class Avion {
 	public void setCompannia(String compannia) {
 		this.compannia = compannia;
 	}
-
-	public boolean asignarVuelo(int capacidad, double kilometros) {
+	//asiento ocupados seria una caracteristica a guardar des vuelo, y no se va a guardar
+	public boolean asignarVuelo(int asientos, double kilometros) {
 		boolean resultado;
-		if (capacidad <= this.capacidad) {
+		if (asientos <= this.capacidad) {
 			resultado = true;
-			this.capacidad = this.capacidad - capacidad;
 			this.kmVolados = this.kmVolados + kilometros;
 			this.numVuelos = this.numVuelos + 1;
 		} else {
@@ -82,5 +83,29 @@ public class Avion {
 		}
 		return resultado;
 	}
+
+	@Override
+	public String toString() {
+		return "Avion [idAvion=" + idAvion + ", capacidad=" + capacidad + ", numVuelos=" + numVuelos + ", kmVolados="
+				+ kmVolados + ", compannia=" + compannia + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idAvion);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Avion other = (Avion) obj;
+		return Objects.equals(idAvion, other.idAvion);
+	}
+	
 
 }
