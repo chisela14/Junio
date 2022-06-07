@@ -4,14 +4,15 @@ public class BarajaInglesa extends Baraja {
 	
 	private static final int CARTAS_BARAJA_INGLESA = 52;
 
-	public BarajaInglesa(int numCartas) throws BarajaException {
+	public BarajaInglesa() throws BarajaException {
 		super(CARTAS_BARAJA_INGLESA);
 	}
 
 	@Override
 	protected String generaPalo() {
-		// crear metodo
-		
+		int num = (int) (Math.random()*(PALOS-1) +1);
+		PalosBarajaInglesa[] array = PalosBarajaInglesa.values();
+		return array[num].toString();
 	}
 
 	@Override

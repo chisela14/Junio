@@ -6,7 +6,7 @@ public abstract class Baraja implements Repartible{
 	protected int numCartas;
 	private int siguiente;
 	protected Carta[] cartas;
-	private final int PALOS = 4;
+	protected final static int PALOS = 4;
 	
 	public Baraja(int numCartas) throws BarajaException {
 		this.numCartas = numCartas;
@@ -37,16 +37,15 @@ public abstract class Baraja implements Repartible{
 					cartas [cartasGeneradas++] = c;
 				}
 			}
-			
 		}
-		
 	}
 	
+	//lo desarrollan los hijos
 	protected abstract String generaPalo();
 	
-	
 	private int generaNumero() {
-		
+		int num = (int) (Math.random()*(this.numCartas/4)) + 1;
+		return num;
 	}
 
 	@Override
@@ -55,7 +54,12 @@ public abstract class Baraja implements Repartible{
 	}
 	
 	public Carta getSiguiente() {
-		
+		if (this.siguiente == this.numCartas) {
+			this.siguiente = 0;
+		}
+		Carta resultado = new Carta (cartas[this.siguiente].getNumber(), cartas[this.siguiente].getPalo());
+		this.siguiente++;
+		return resultado;
 	}
 	
 }

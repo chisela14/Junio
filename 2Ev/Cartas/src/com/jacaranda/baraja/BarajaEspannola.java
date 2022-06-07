@@ -10,8 +10,9 @@ public class BarajaEspannola extends Baraja {
 
 	@Override
 	protected String generaPalo() {
-		//crear metodo
-		
+		int num = (int) (Math.random()*(PALOS-1) +1);
+		PalosBarajaEspannola[] array = 	PalosBarajaEspannola.values();
+		return array[num].toString();
 	}
 
 	@Override
