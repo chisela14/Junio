@@ -11,9 +11,11 @@ public class Main {
 		BarajaEspannola b1 = new BarajaEspannola();
 		System.out.println(b1.toString());
 		
+		/*
 		//crear baraja inglesa
 		BarajaInglesa b2 = new BarajaInglesa();
 		System.out.println(b2.toString());
+		*/
 	}
 
 }

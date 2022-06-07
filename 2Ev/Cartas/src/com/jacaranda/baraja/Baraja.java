@@ -22,9 +22,7 @@ public abstract class Baraja implements Repartible{
 			int cartasGeneradas = 0;
 			while (cartasGeneradas < this.numCartas) {
 				//genero un carta
-				int numero = generaNumero();
-				String palo = generaPalo();
-				Carta c = new Carta(numero,palo);
+				Carta c = new Carta(generaNumero(),generaPalo());
 				//compruebo la lista de cartas
 				boolean encontrado = false;
 				for (int i=0; i<cartasGeneradas && encontrado == false; i++) {
@@ -34,7 +32,8 @@ public abstract class Baraja implements Repartible{
 				}
 				//si no la encuentro la añado
 				if (encontrado == false) {
-					cartas [cartasGeneradas++] = c;
+					cartas [cartasGeneradas] = c;
+					cartasGeneradas++;
 				}
 			}
 		}
