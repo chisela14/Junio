@@ -1,5 +1,7 @@
 package com.jacaranda.baraja;
 
+import java.util.Arrays;
+
 public class BarajaInglesa extends Baraja {
 	
 	private static final int CARTAS_BARAJA_INGLESA = 52;
@@ -10,15 +12,17 @@ public class BarajaInglesa extends Baraja {
 
 	@Override
 	protected String generaPalo() {
-		int num = (int) (Math.random()*(PALOS-1) +1);
+		int num = (int) (Math.random()*PALOS);
 		PalosBarajaInglesa[] array = PalosBarajaInglesa.values();
 		return array[num].toString();
 	}
 
 	@Override
 	public String toString() {
-		return "BarajaInglesa []";
+		return "BarajaInglesa [numCartas=" + numCartas + ", cartas=" + Arrays.toString(cartas) + "]";
 	}
+
+	
 	
 
 }
