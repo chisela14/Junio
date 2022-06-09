@@ -30,12 +30,8 @@ public class Bloc {
 	}
 	
 	public void eliminarNota (int posicion) {
-		for(int i=0; i<this.numNotas; i++) {
-			if(i<posicion) {
-				notas[i]=notas[i];
-			}else if (i>posicion) {
+		for(int i=posicion+1; i<this.numNotas; i++) {
 				notas[i-1]=notas[i];
-			}
 		}
 		this.numNotas --;
 	}
