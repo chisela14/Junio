@@ -3,12 +3,13 @@ package es.iesjacaranda;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Reserva {
+public class Reserva implements Comparable<Reserva>{
 	
 	private LocalDate fechaI;
 	private LocalDate fechaF;
 	private Sala sala;
-	private Cliente cliente;
+	private Cliente[] clientes;
+	private int numClientes;
 	
 	public Reserva(LocalDate fechaI, LocalDate fechaF, Sala sala) {
 		this.fechaI = fechaI;
@@ -31,9 +32,9 @@ public class Reserva {
 		return sala.getCodigo();
 	}
 	
-	//esto es lo que me piden?
 	public void addCliente(Cliente cliente) {
-		this.cliente = cliente;
+		clientes[0] = cliente;
+		this.numClientes ++;
 	}
 	
 	public LocalDate getFechaI() {
@@ -46,7 +47,7 @@ public class Reserva {
 
 	@Override
 	public String toString() {
-		return "Reserva: Fecha Inicial: " + fechaI + " Fecha Final: " + fechaF + " Cliente: " + cliente.toString() + " Sala: " + sala.getCodigo();
+		return "Reserva: Fecha Inicial: " + fechaI + " Fecha Final: " + fechaF + " Cliente: " + clientes.toString() + " Sala: " + sala.getCodigo();
 	}
 
 	@Override
@@ -65,6 +66,17 @@ public class Reserva {
 		Reserva other = (Reserva) obj;
 		return Objects.equals(fechaF, other.fechaF) && Objects.equals(fechaI, other.fechaI)
 				&& Objects.equals(sala, other.sala);
+	}
+
+	@Override
+	public int compareTo(Reserva o) {
+		int salida = 0;
+		if(this.fechaI.isAfter(o.getFechaI())) {
+			salida = 1;
+		}else if(this.fechaI.isBefore(o.getFechaI())) {
+			salida = -1;
+		}
+		return salida;
 	}
 
 	

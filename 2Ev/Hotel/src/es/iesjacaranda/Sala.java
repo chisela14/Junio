@@ -8,6 +8,7 @@ public class Sala {
 	private int codigo;
 	private TiposSala tipo;
 	private Reserva[] reservas;
+	private int numReservas;
 	
 	public Sala(TiposSala tipo) {
 		this.tipo = tipo;
@@ -16,11 +17,23 @@ public class Sala {
 	}
 	
 	public void addReserva(Reserva reserva) {
-		
+		reservas[0] = reserva;
+		this.numReservas ++;
 	}
+	
 	//debe borrar la reserva que se la pasa por parámetro de la lista de reservas de las salas
+	//asumo que se puede hacer, se va a encontrar la reserva o se buscara que la reserva existe en otro lado
 	public void delReserva(Reserva reserva) {
-		
+		//encontrar la reserva en el array
+		for(int i=0;i<=reservas.length;i++) {
+			if(reservas[i].compareTo(reserva)==0) {
+				//borrarla
+				for(int j=i+1;j<reservas.length;j++) {
+					reservas[i-1] = reservas[i];
+				}
+			}
+		}
+		this.numReservas --;
 	}
 
 	public int getCodigo() {
@@ -37,6 +50,14 @@ public class Sala {
 	
 	public double getFactor() {
 		return tipo.getFactor();
+	}
+
+	public Reserva[] getReservas() {
+		return reservas;
+	}
+
+	public int getNumReservas() {
+		return numReservas;
 	}
 
 	@Override
@@ -60,8 +81,5 @@ public class Sala {
 		Sala other = (Sala) obj;
 		return codigo == other.codigo;
 	}
-	
-	
-	
 
 }

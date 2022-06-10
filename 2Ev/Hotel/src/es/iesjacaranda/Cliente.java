@@ -3,9 +3,12 @@ package es.iesjacaranda;
 import java.util.Objects;
 
 public class Cliente {
+	
 	private String nombre;
 	private String apellidos;
 	private String dni;
+	private Reserva[] reservas;
+	private int numReservas;
 	
 	public Cliente(String nombre, String apellidos, String dni) {
 		this.nombre = nombre;
@@ -38,23 +41,32 @@ public class Cliente {
 	}
 
 	public void addReserva(Reserva reserva) {
-		
+		reservas[0] = reserva;
+		this.numReservas ++;
 	}
 	
-	//borra la reserva que se encuentra en la posición int -1. Devolverá la reserva borrada y  si no existe lanzará una exception.
-	public Reserva delReserva(int posicion) {
-		
+	//borra la reserva que se encuentra en la posición-1. Devolverá la reserva borrada y  si no existe lanzará una exception.
+	public Reserva delReserva(int posicion) throws ClienteException {
+		if(reservas[posicion-1]==null) {
+			throw new ClienteException("La reserva que se quiere borrar no existe");
+		}else {
+			Reserva devolver = reservas[posicion-1];
+			for(int i=posicion+1;i<this.numReservas;i++) {
+				reservas[i-1] = reservas[i];
+			}
+			this.numReservas --;
+			return devolver;
+		}
 	}
 	
-//    • El método getReserva devolverá un String con las reservas con el siguiente formato:
-//	1.- reserva.toString
-//	2.- reserva.toString()
-//	…………………….
-//		n.- reserva.toString()
 	public String getReservas() {
-		
+		StringBuilder lista = new StringBuilder();
+		for(int i=0;i<this.numReservas;i++) {
+			lista.append(i+1+".- "+reservas[i].toString()+"\n");
+		}
+		lista.append("............................................");
+		return lista.toString();
 	}
-
 
 	@Override
 	public String toString() {
