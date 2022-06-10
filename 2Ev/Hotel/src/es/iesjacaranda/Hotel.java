@@ -6,13 +6,13 @@ import java.util.Arrays;
 public class Hotel {
 	
 	private final int MAX_CLIENTES = 100;
-	private Cliente[] clientes = new Cliente[MAX_CLIENTES];
+	private Cliente[] clientes;
 	private int numClientes;
 	private final int MAX_SALAS = 5;
-	private Sala[] salas = new Sala[MAX_SALAS];
+	private Sala[] salas;
 	private int numSalas;
 	private final int MAX_RESERVAS = 75;
-	private Reserva[] reservas = new Reserva[MAX_RESERVAS];
+	private Reserva[] reservas;
 	private int numReservas;
 	
 	public Hotel(){
@@ -20,6 +20,9 @@ public class Hotel {
 	}
 	
 	public void inicializarHotel() {
+		clientes = new Cliente[MAX_CLIENTES];
+		salas = new Sala[MAX_SALAS];
+		reservas = new Reserva[MAX_RESERVAS];
 		this.numReservas = 0;
 		this.numClientes = 0;
 		this.numSalas = 0;
@@ -52,7 +55,7 @@ public class Hotel {
 	
 	public boolean encuentraCliente (String dni) {
 		boolean encontrado = false;
-		for(int i=0; i<clientes.length;i++) {
+		for(int i=0; i<this.numClientes;i++) {
 			if(dni.equals(clientes[i].getDni())) {
 				encontrado = true;
 			}
@@ -62,31 +65,37 @@ public class Hotel {
 	
 	public void nuevoCliente(String dni,String nombre, String apellido) {
 		Cliente c = new Cliente(dni, nombre, apellido);
-		clientes[0] = c;
+		clientes[this.numClientes] = c;
 		this.numClientes ++;
 	}
 	
 	public int addReserva(TiposSala sala, LocalDate inicio, int dias, int personas) throws HotelException {
-		//buscar si hay sala libre
-		Sala salaDisponible = buscarSala(sala,inicio,dias);
-		if (salaLibre(salaDisponible,inicio,dias)==true){
-			LocalDate acaba = inicio.plusDays(dias);
-			Reserva nueva = new Reserva(inicio,acaba,salaDisponible);
-			reservas[0] = nueva;
-			this.numReservas ++;
-			return personas;
+		//comprobar que no se introducen mas personas de las permitidas
+		if(personas>sala.getNumPersonas()) {
+			throw new HotelException("No se permiten tantas personas en ese tipo de sala.");
 		}else {
-			throw new HotelException("No hay ninguna sala disponible de ese tipo");
+			//buscar si hay sala libre
+			Sala salaDisponible = buscarSala(sala,inicio,dias);
+			if (salaLibre(salaDisponible,inicio,dias)==true){
+				LocalDate acaba = inicio.plusDays(dias);
+				Reserva nueva = new Reserva(inicio,acaba,salaDisponible);
+				reservas[0] = nueva;
+				this.numReservas ++;
+				return personas;
+			}else {
+				throw new HotelException("No hay ninguna sala disponible de ese tipo");
+			}
 		}
 	}
 	
 	public void addClienteUltimaReserva(String dni) throws HotelException {
-		Reserva ultima = reservas[numReservas-1];
+		Reserva ultima = reservas[0];
 		//encontrar cliente
 		if(encuentraCliente(dni)==false) {
 			throw new HotelException("No se ha registrado ningún cliente con ese DNI en el hotel");
 		}else {
-			for(int i=0; i<clientes.length;i++) {
+			//buscar el cliente con ese dni
+			for(int i=0; i<this.numClientes;i++) {
 				if(dni.equals(clientes[i].getDni())) {
 					Cliente c1 = clientes[i];
 					//añadirlo a la ultima reserva
@@ -104,7 +113,7 @@ public class Hotel {
 			throw new HotelException("El cliente no existe");
 		}else {
 			//buscar el cliente y borrar la reserva
-			for(int i=0; i<clientes.length;i++) {
+			for(int i=0; i<this.numClientes;i++) {
 				if(dni.equals(clientes[i].getDni())) {
 					clientes[i].delReserva(posicion-1);
 				}
@@ -115,18 +124,28 @@ public class Hotel {
 	
 	//buscar en las reservas de la sala si solapa o no
 	private boolean salaLibre(Sala sala, LocalDate inicio, int dias) {
-		boolean libre= false;
-		LocalDate acaba = inicio.plusDays(dias);
+		boolean libre = false, salir = false;
 		//en el uml no aparece ningun get reservas de sala pero entiendo que hace falta (si no es asi, no se como hacer este metodo)
 		Reserva[] reservasSala = sala.getReservas();
-		int numReservasSala = sala.getNumReservas();
-		while(libre = false) {
-			for(int i=0; i<numReservasSala; i++) {
-				if(reservasSala[i].solapa(inicio, dias)==false) {
-					libre = true;
+		//si no hay reservas se pone libre directamente
+		if(reservasSala==null) {
+			libre = true;
+		}else {
+			int numReservasSala = sala.getNumReservas();
+			while(salir == false) {
+				for(int i=0; i<numReservasSala; i++) {
+					if(reservasSala[i].solapa(inicio, dias)==false) {
+						libre = true;
+						salir = true;
+					}
+				}
+				//si despues del for no se ha encontrado sala se acaba el bucle
+				if (libre == false) {
+					salir = true;
 				}
 			}
 		}
+		
 		return libre;
 	}
 	//buscar una sala libre para esas fechas, si no existe se lanza una excepcion
@@ -153,7 +172,7 @@ public class Hotel {
 			throw new HotelException("No hay clientes");
 		}else {
 			StringBuilder salida = new StringBuilder();
-			for(int i=0; i<clientes.length;i++) {
+			for(int i=0; i<this.numClientes;i++) {
 				salida.append(clientes[i].toString() +"\n");
 			}
 			salida.append("........................");
@@ -178,7 +197,7 @@ public class Hotel {
 	public String getReservasClientes(String dni) {
 		StringBuilder salida = new StringBuilder();
 		//encontrar al cliente con ese dni(asumo que lo encontrara)
-		for(int i=0; i<clientes.length;i++) {
+		for(int i=0; i<this.numClientes;i++) {
 			if(dni.equals(clientes[i].getDni())) {
 				salida.append(clientes[i].getReservas());
 			}

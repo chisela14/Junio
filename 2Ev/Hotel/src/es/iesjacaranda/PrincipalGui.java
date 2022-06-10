@@ -22,6 +22,10 @@ public class PrincipalGui {
 //	en habitación doble o suite. Si el cliente no existe, se deberá solicitar el nombre y el
 //	apellido.
 	
+	//fecha por defecto: "yyyy-mm-dd"  �:
+		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		//LocalDate localDate = LocalDate.parse(date, formatter);
+	
 	public static void main(String[] args) throws HotelException, ClienteException {
 		
 		//creo un hotel
@@ -43,25 +47,27 @@ public class PrincipalGui {
 					break;
 				}
 				case(2):{
+					//no se si he puesto bien la informacion en los try catch, he comentado lo que quiero hacer
 					fecha = obtenerFecha();
 					dias = obtenerEntero("días");
 					habitacion = obtenerTipoSala();
 					personas = obtenerEntero("personas");
 					try {
-						hotel.addReserva(habitacion, fecha, dias, personas);
-						for (int i=0;i<=personas;i++) {
-							dni = obtenerCadena(String.valueOf(i+1)+"º dni");
-							try {
-								hotel.addClienteUltimaReserva(dni);
-							}catch (Exception e) {
-								nombre = obtenerCadena("nombre");
-								apellidos = obtenerCadena("apellido");
-								hotel.nuevoCliente(dni,nombre,apellidos);
-								hotel.addClienteUltimaReserva(dni);
-							}
-						}
-					}catch(Exception e) {
+						hotel.addReserva(habitacion, fecha, dias, personas);//esta es la linea a probar
+					}catch(Exception e) {//si la primera linea salta exception (num personas no permitido o no se peude hacer la reserva) se informa
 						System.out.println(e.getMessage());
+					}
+					//si en la primera linea no salta exception se hace lo siguiente:
+					for (int i=0;i<personas;i++) {
+						dni = obtenerCadena(String.valueOf(i+1)+"º dni");
+						try {
+							hotel.addClienteUltimaReserva(dni);
+						}catch (Exception e) {
+							nombre = obtenerCadena("nombre");
+							apellidos = obtenerCadena("apellido");
+							hotel.nuevoCliente(dni,nombre,apellidos);
+							hotel.addClienteUltimaReserva(dni);
+						}
 					}
 					break;
 				}
@@ -84,7 +90,11 @@ public class PrincipalGui {
 				}
 				case(6):{
 					fecha = obtenerFecha();
-					hotel.getReservasPosteriores(fecha);
+					try {
+						hotel.getReservasPosteriores(fecha);
+					}catch (Exception e) {
+						System.out.println("No hay reservas posteriores a esa fecha.");
+					}
 					break;
 				}
 				case(7):{
@@ -124,20 +134,20 @@ public class PrincipalGui {
 	}
 	
 	private static int seleccionarOpcionMenuPrincipal() {
-		System.out.println("Introduce una opción: ");
+		System.out.println("Introduce una opcion: ");
 		int opcion = Integer.parseInt(teclado.nextLine());
 		return opcion;
 	}
 	
 	//revisar como hace el parse para lanzar exception en el menu
 	private static LocalDate obtenerFecha() {
-		System.out.println("Introduce la fecha: ");
+		System.out.println("Introduce la fecha (yyyy-mm-dd): ");
 		LocalDate fecha = LocalDate.parse(teclado.nextLine());
 		return fecha;
 	}
 	
 	private static TiposSala obtenerTipoSala() {
-		System.out.println("Introduce el tipo de sala: ");
+		System.out.println("Introduce el tipo de sala (simple, doble, suite, reunion o celebracion): ");
 		String cadena = teclado.nextLine().toUpperCase();
 		TiposSala salida = TiposSala.valueOf(cadena);
 		return salida;
@@ -149,7 +159,7 @@ public class PrincipalGui {
 //	}
 	
 	private static int obtenerEntero(String cadena) {
-		System.out.println("Introduce el número de "+cadena+": ");
+		System.out.println("Introduce el numero de "+cadena+": ");
 		int salida = Integer.parseInt(teclado.nextLine());
 		return salida;
 	}

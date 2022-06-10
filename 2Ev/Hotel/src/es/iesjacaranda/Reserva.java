@@ -15,6 +15,7 @@ public class Reserva implements Comparable<Reserva>{
 		this.fechaI = fechaI;
 		this.fechaF = fechaF;
 		this.sala = sala;
+		clientes = new Cliente[sala.getOcupacionMaxima()];
 	}
 	
 	public boolean solapa(LocalDate inicio, int dias) {

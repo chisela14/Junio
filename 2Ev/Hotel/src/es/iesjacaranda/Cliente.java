@@ -7,13 +7,16 @@ public class Cliente {
 	private String nombre;
 	private String apellidos;
 	private String dni;
+	private final int MAX_RESERVAS = 10;
 	private Reserva[] reservas;
 	private int numReservas;
 	
-	public Cliente(String nombre, String apellidos, String dni) {
+	public Cliente(String dni, String nombre, String apellidos) {
+		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
-		this.dni = dni;
+		//no se especifica, pero por ejemplo un cliente tendra 10 reservas maximo
+		this.reservas = new Reserva[MAX_RESERVAS];
 	}
 	
 	public String getNombre() {
