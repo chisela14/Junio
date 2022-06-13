@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Bloc/src"/>
+	<classpathentry kind="src" path="Cartas/src"/>
+	<classpathentry kind="src" path="cartasGraficoHerencia-main/src"/>
+	<classpathentry kind="src" path="Ejercicios/src"/>
+	<classpathentry kind="src" path="Hotel/src"/>
+	<classpathentry kind="src" path="Libreria/src"/>
+	<classpathentry kind="src" path="Persona/src"/>
+	<classpathentry kind="src" path="Primera clase/src"/>
+	<classpathentry kind="src" path="String/Strings/src"/>
+	<classpathentry kind="src" path="String/StringVersusStringBuilder_Comparar/StringversusStringBuilder_Comparar/src"/>
+	<classpathentry kind="output" path="Bloc/bin"/>
+</classpath>
