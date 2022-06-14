@@ -20,7 +20,7 @@ public class Fecha {
 			this.diaSemana = conseguirDiaSemana();
 		}
 	}
-
+	//puedo usar getDayOfTheWeek
 
 	@Override
 	public String toString() {

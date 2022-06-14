@@ -1,6 +1,7 @@
 package cartaBar;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Carta {
 	
@@ -40,7 +41,51 @@ public class Carta {
 		return mostrarCarta();
 	}
 	
-	public void ordenarCarta(int posElemento, int posDeseada) {
-		
+	public void ordenarCarta(int posElemento, int posDeseada) throws CartaException {
+		Articulo a = elementos[posElemento];
+		if(posElemento<posDeseada) {
+			for(int i=posElemento; i<this.numElementos; i++) {
+				if(i<posDeseada-1) {
+					elementos[i-1] = elementos[i];
+				}else if(i==posDeseada-1) {
+					elementos[i]= a;
+				}
+			}
+		}else if(posElemento>posDeseada){
+			Articulo b = elementos[posDeseada];
+			for(int i=posDeseada-1; i<this.numElementos; i++) {
+				if(i==posDeseada-1) {
+					elementos[i+1] = elementos[i];
+					elementos[i]= a;
+				}else if(i>posDeseada-1 && i<posElemento) {
+					elementos[i+1] = elementos[i];
+				}
+			}
+		}else {
+			throw new CartaException("La posición del elemento y la posición deseada son la misma");
+		}
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nombreBar);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Carta other = (Carta) obj;
+		return Objects.equals(nombreBar, other.nombreBar);
+	}
+
+	@Override
+	public String toString() {
+		return "La carta de " + nombreBar + "tiene " + numElementos + " elementos";
+	}
+	
 }
