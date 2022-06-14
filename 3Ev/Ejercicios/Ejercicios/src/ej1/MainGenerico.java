@@ -4,8 +4,8 @@ public class MainGenerico {
 
 	public static void main(String[] args) throws EquipoException {
 		
-		Equipo a = new Equipo("A");
-		Equipo b = new Equipo("B");
+		EquipoGenerico a = new EquipoGenerico("A");
+		EquipoGenerico b = new EquipoGenerico("B");
 		
 		//cambiar alumno por integer
 		Integer pepe = new Integer(1);
@@ -13,37 +13,37 @@ public class MainGenerico {
 		Integer paula = new Integer(3);
 		Integer pablo = new Integer(4);
 		//añadir
-		a.addAlumno(pepe);
+		a.addObjeto(pepe);
 		try {
-			a.addAlumno(pepe);
+			a.addObjeto(pepe);
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}		
-		System.out.println(a.mostrarAlumnos());	
+		System.out.println(a.mostrarObjetos());	
 		//comprobar si tiene un alumno
-		System.out.println(a.alumnoPertenece(pepe));
-		System.out.println(a.alumnoPertenece(paula));
+		System.out.println(a.objetoPertenece(pepe));
+		System.out.println(a.objetoPertenece(paula));
 		//borrar
 		try {
-			a.delAlumno(pablo);	
+			a.delObjeto(pablo);	
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-		a.delAlumno(pepe);
-		System.out.println(a.mostrarAlumnos());	
+		a.delObjeto(pepe);
+		System.out.println(a.mostrarObjetos());	
 		//unir equipos
-		a.addAlumno(pepe);
-		a.addAlumno(paco);
-		b.addAlumno(paula);
-		b.addAlumno(pablo);
-		Equipo c = a.unirEquipos(b);
+		a.addObjeto(pepe);
+		a.addObjeto(paco);
+		b.addObjeto(paula);
+		b.addObjeto(pablo);
+		EquipoGenerico c = a.unirEquipos(b);
 		System.out.println(c.getNombre());
-		System.out.println(c.mostrarAlumnos());
+		System.out.println(c.mostrarObjetos());
 		//interseccion equipos
-		a.addAlumno(paula);
-		Equipo d = a.interseccionEquipos(b);
+		a.addObjeto(paula);
+		EquipoGenerico d = a.interseccionEquipos(b);
 		System.out.println(d.getNombre());
-		System.out.println(d.mostrarAlumnos());
+		System.out.println(d.mostrarObjetos());
 	}
 
 }
