@@ -36,7 +36,8 @@ public class Equipo {
 		if(!alumnos.contains(a)) {
 			salida = null;
 		}else {
-			salida = a;
+			int pos = alumnos.indexOf(a);
+			salida = alumnos.get(pos);
 		} 
 		return salida;
 	}
