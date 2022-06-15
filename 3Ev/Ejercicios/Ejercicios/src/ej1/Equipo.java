@@ -1,23 +1,22 @@
 package ej1;
 
-import java.util.ArrayList;
+
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Objects;
 
 public class Equipo {
 	
 	private String nombre;
-	//Set no permite elementos repetidos
-	private LinkedList<Alumno> alumnos;
+	private HashSet<Alumno> alumnos;
 	
 	public Equipo(String nombre) {
 		this.nombre = nombre;
-		alumnos = new LinkedList<Alumno>();
+		alumnos = new HashSet<Alumno>();
 	}
 
 	public void addAlumno(Alumno a) throws EquipoException {
-		if(alumnos.contains(a)) {
+		if(alumnos.add(a)==false) {
 			throw new EquipoException("El alumno ya forma parte del equipo");
 		}else {
 			alumnos.add(a);
@@ -32,13 +31,21 @@ public class Equipo {
 		} 
 	}
 	public Alumno alumnoPertenece(Alumno a) {
-		Alumno salida;
-		if(!alumnos.contains(a)) {
-			salida = null;
-		}else {
+		Alumno salida = null;
+		if(alumnos.contains(a)) {
+			/* encontrar con listas
 			int pos = alumnos.indexOf(a);
 			salida = alumnos.get(pos);
-		} 
+			*/
+			Iterator<Alumno> itr = alumnos.iterator();
+			while(salida==null) {
+				for(Alumno b: alumnos) {
+					if(b.equals(a)) {
+						salida = b;
+					}
+				}
+			}
+		}
 		return salida;
 	}
 	

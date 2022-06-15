@@ -2,6 +2,7 @@ package ej2;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Historial {
 	
@@ -26,10 +27,9 @@ public class Historial {
 	
 	public String mostrarHistorialDia(LocalDate dia) {
 		ArrayList<PaginaWeb> paginasDia = new ArrayList<>();
-		for(PaginaWeb p: listaPaginas) {
-			if(p.getFechaHora().toLocalDate().isEqual(dia)) {
-				paginasDia.add(p);
-			}
+		Iterator<PaginaWeb> itr = listaPaginas.iterator();
+		while(itr.hasNext()&& itr.next().getFechaHora().toLocalDate().isEqual(dia)) {
+			paginasDia.add(itr.next());
 		}
 		//mostrar paginas
 		StringBuilder salida = new StringBuilder();

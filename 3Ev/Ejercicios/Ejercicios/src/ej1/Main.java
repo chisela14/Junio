@@ -3,9 +3,7 @@ package ej1;
 public class Main {
 	
 	public static void main(String[] args) throws EquipoException {
-		/*queria usar hashset para que no se añadieran alumnos repetidos
-		 * pero si quiero lanzar exception voy a usar linkedlist	
-		*/
+		
 		Equipo a = new Equipo("A");
 		Equipo b = new Equipo("B");
 		
@@ -21,6 +19,7 @@ public class Main {
 			System.out.println(e.getMessage());
 		}		
 		System.out.println(a.mostrarAlumnos());	
+		System.out.println("_______________________");
 		//comprobar si tiene un alumno
 		System.out.println(a.alumnoPertenece(pepe));
 		System.out.println(a.alumnoPertenece(paula));
