@@ -1,5 +1,6 @@
 package ej2;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Historial {
@@ -23,16 +24,17 @@ public class Historial {
 		return salida.toString();
 	}
 	
-	public String mostrarHistorialDia(dia) {
-		//mapa?
-		//conseguir un sublist de la lista segun el dia
-		int inicio = listaPaginas.indexOf(dia);
-		int ultimo = listaPaginas.lastIndexOf(dia);
-		ArrayList<PaginaWeb> paginasDia = listaPaginas.subList(inicio, ultimo);
+	public String mostrarHistorialDia(LocalDate dia) {
+		ArrayList<PaginaWeb> paginasDia = new ArrayList<>();
+		for(PaginaWeb p: listaPaginas) {
+			if(p.getFechaHora().toLocalDate().isEqual(dia)) {
+				paginasDia.add(p);
+			}
+		}
 		//mostrar paginas
 		StringBuilder salida = new StringBuilder();
 		for(PaginaWeb p: paginasDia) {
-			salida.append(p.toString());
+			salida.append(p.toString()+System.lineSeparator());
 		}
 		return salida.toString();
 	}

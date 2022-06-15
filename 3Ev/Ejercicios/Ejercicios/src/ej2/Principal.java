@@ -1,5 +1,6 @@
 package ej2;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Principal {
@@ -28,7 +29,9 @@ public static Scanner teclado = new Scanner(System.in);
 					break;
 				}
 				case(3):{
-					System.out.println(h.mostrarHistorialDia());
+					System.out.println("Introduce el día a mostrar en el historial (yyyy-mm-dd): ");
+					LocalDate dia = LocalDate.parse(teclado.nextLine());
+					System.out.println(h.mostrarHistorialDia(dia));
 					break;
 				}
 				case(4):{
