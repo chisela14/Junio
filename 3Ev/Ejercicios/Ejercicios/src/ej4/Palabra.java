@@ -3,7 +3,7 @@ package ej4;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Palabra {
+public class Palabra implements Comparable<Palabra>{
 	
 	private String nombre;
 	ArrayList<Significado> significados;
@@ -41,7 +41,12 @@ public class Palabra {
 
 	@Override
 	public String toString() {
-		return "Palabra [nombre=" + nombre + ", significados=" + significados + "]";
+		return "Palabra: " + nombre + " Significados: " + significados;
+	}
+
+	@Override
+	public int compareTo(Palabra o) {
+		return this.nombre.compareTo(o.getNombre());
 	}
 	
 	
