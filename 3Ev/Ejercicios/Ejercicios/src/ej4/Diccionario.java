@@ -38,29 +38,58 @@ public class Diccionario {
 		}
 	}
 	
-	public String buscarPalabra(Palabra p) {
-		return conseguirPalabra(p).toString();
+	public String buscarPalabra(String nombre) throws DiccionarioException {
+		Palabra salida = null;
+		boolean encontrado = false;
+		while(!encontrado) {
+			for(Palabra p: palabras) {
+				if(p.getNombre().equals(nombre)) {
+					salida = p;
+					encontrado = true;
+				}
+			}
+			if(!encontrado) {
+				throw new DiccionarioException("No se ha encontrado esa palabra en el diccionario");
+			}
+		}
+		return salida.toString();
 	}
 	
-	public void borrarPalabra(Palabra p) {
-		palabras.remove(p);
+	public void borrarPalabra(String nombre) throws DiccionarioException {
+		Palabra borrar = null;
+		for(Palabra p: palabras) {
+			if(p.getNombre().equals(nombre)) {
+				borrar = p;
+			}
+		}
+		if(borrar!= null && palabras.contains(borrar)) {
+			palabras.remove(borrar);
+		}else {
+			throw new DiccionarioException("La palabra a borrar no está recogida en el diccionario");
+		}
+	
 	}
 	
-	public String palabrasEmpiezanPor(String cadena) {
+	public String palabrasEmpiezanPor(String cadena) throws DiccionarioException {
 		Collections.sort(palabras);
-		Iterator<Palabra> itr = palabras.iterator();
 		StringBuilder salida = new StringBuilder();
-		while(itr.hasNext()&&itr.next().getNombre().startsWith(cadena)) {
-			salida.append(itr.next().toString());
+		for(Palabra p: palabras) {
+			if(p.getNombre().startsWith(cadena)) {
+				salida.append(p.toString()+ System.lineSeparator());
+			}
+		}
+		if(salida.isEmpty()) {
+			throw new DiccionarioException("No se han encontrado palabras que empiecen por dicha secuencia");
 		}
 		return salida.toString();
 	}
 	
 	public String mostrarPalabras() {
+		Collections.sort(palabras);
 		Iterator<Palabra> itr = palabras.iterator();
 		StringBuilder salida = new StringBuilder();
 		while(itr.hasNext()) {
-			salida.append(itr.next().toString());
+			salida.append(itr.next().toString() + System.lineSeparator());
 		}
 		return salida.toString();
 	}
