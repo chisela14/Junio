@@ -7,7 +7,6 @@ public class Significado {
 	private String descripcion;
 
 	public Significado(String descripcion) {
-		super();
 		this.descripcion = descripcion;
 	}
 
