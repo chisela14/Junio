@@ -37,11 +37,12 @@ public class Equipo {
 			int pos = alumnos.indexOf(a);
 			salida = alumnos.get(pos);
 			*/
-			Iterator<Alumno> itr = alumnos.iterator();
-			while(salida==null) {
+			boolean encontrado = false;
+			while(!encontrado) {
 				for(Alumno b: alumnos) {
 					if(b.equals(a)) {
 						salida = b;
+						encontrado = true;
 					}
 				}
 			}
