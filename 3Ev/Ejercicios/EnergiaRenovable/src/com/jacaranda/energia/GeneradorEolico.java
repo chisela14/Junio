@@ -29,7 +29,5 @@ public class GeneradorEolico extends Generador {
 		return "GeneradorEolico [numAspas=" + numAspas + ", CODIGO=" + CODIGO + ", fechaInicio=" + fechaInicio
 				+ ", localidad=" + localidad + ", potencia=" + potencia + "]";
 	}
-	
-	
 
 }

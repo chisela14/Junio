@@ -47,8 +47,11 @@ public class GeneradorSolar extends Generador{
 
 	@Override
 	public String toString() {
-		return "GeneradorSolar [tipoGenerador=" + tipo + ", coeficienteSolar=" + numPaneles/metros + "]";
+		return "GeneradorSolar [coeficienteSolar=" + numPaneles/metros + ", tipo=" + tipo + ", CODIGO=" + CODIGO + ", fechaInicio="
+				+ fechaInicio + ", localidad=" + localidad + ", potencia=" + potencia + "]";
 	}
+
+
 
 	
 	

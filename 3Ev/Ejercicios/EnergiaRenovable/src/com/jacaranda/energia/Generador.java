@@ -1,8 +1,9 @@
 package com.jacaranda.energia;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
-public abstract class Generador implements Monetizable{
+public abstract class Generador implements Monetizable, Comparable<Generador>{
 	
 	protected final int CODIGO;
 	protected static int codSiguiente =1;
@@ -36,6 +37,35 @@ public abstract class Generador implements Monetizable{
 
 	protected String getLocalidad() {
 		return localidad;
+	}
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(CODIGO);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Generador other = (Generador) obj;
+		return CODIGO == other.CODIGO;
+	}
+
+	@Override
+	public int compareTo(Generador o) {
+		int salida = 0;
+		if(this.fechaInicio.isAfter(o.getFechaInicio())) {
+			salida = 1;
+		}else if (this.fechaInicio.isBefore(o.getFechaInicio())) {
+			salida = -1;
+		}
+		return salida;
 	}
 	
 }
