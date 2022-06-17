@@ -15,7 +15,7 @@ public class Empresa {
 	
 	public void addGenerador(Generador g) throws EmpresaException {
 		if(generadores.contains(g)) {
-			throw new EmpresaException("El generador ya está registrado en la empresa");
+			throw new EmpresaException("El generador ya estï¿½ registrado en la empresa");
 		}else {
 			generadores.add(g);
 		}
@@ -56,6 +56,7 @@ public class Empresa {
 	public void delGenerador(int cod) throws EmpresaException {
 		Generador borrar = null;
 		boolean encontrado = false;
+		//cambiar
 		while(!encontrado) {
 			for(Generador g: generadores) {
 				if(g.getCODIGO()==cod) {
@@ -64,7 +65,7 @@ public class Empresa {
 				}
 			}
 			if(borrar== null) {
-				throw new EmpresaException("No hay ningún generador en la empresa con ese código");
+				throw new EmpresaException("No hay ningï¿½n generador en la empresa con ese cï¿½digo");
 			}
 		}
 		generadores.remove(borrar);

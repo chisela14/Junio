@@ -1,4 +1,8 @@
-package ej3;
+package ej3.principal;
+
+import ej3.Alumno;
+import ej3.PersonaException;
+import ej3.Profesor;
 
 public class Main {
 

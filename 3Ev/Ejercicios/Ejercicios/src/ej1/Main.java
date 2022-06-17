@@ -13,6 +13,7 @@ public class Main {
 		Alumno pablo = new Alumno("Pablo","4");
 		//añadir
 		a.addAlumno(pepe);
+	
 		try {
 			a.addAlumno(pepe);
 		}catch(Exception e) {

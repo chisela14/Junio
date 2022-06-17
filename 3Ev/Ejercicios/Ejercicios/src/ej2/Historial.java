@@ -26,16 +26,19 @@ public class Historial {
 	}
 	
 	public String mostrarHistorialDia(LocalDate dia) {
-		ArrayList<PaginaWeb> paginasDia = new ArrayList<>();
-		Iterator<PaginaWeb> itr = listaPaginas.iterator();
-		while(itr.hasNext()&& itr.next().getFechaHora().toLocalDate().isEqual(dia)) {
-			paginasDia.add(itr.next());
-		}
-		//mostrar paginas
 		StringBuilder salida = new StringBuilder();
-		for(PaginaWeb p: paginasDia) {
-			salida.append(p.toString()+System.lineSeparator());
+		Iterator<PaginaWeb> itr = listaPaginas.iterator();
+		Boolean salir = false;
+		
+		while(itr.hasNext() && !salir ) {
+			PaginaWeb elemento = itr.next();
+			if (elemento.getFechaHora().toLocalDate().isEqual(dia)) {
+				salida.append(elemento.toString());	
+			}else if (elemento.getFechaHora().toLocalDate().isAfter(dia)) {
+				salir = true;
+			}
 		}
+		
 		return salida.toString();
 	}
 	

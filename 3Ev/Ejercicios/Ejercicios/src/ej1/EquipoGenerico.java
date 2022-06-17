@@ -3,18 +3,18 @@ package ej1;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Objects;
-
-public class EquipoGenerico {
+//iMPLEMENTAR CLASE GENERICA<t>
+public class EquipoGenerico <T> {
 	
 	private String nombre;
-	private LinkedList<Object> lista;
+	private LinkedList<T> lista;
 	
 	public EquipoGenerico(String nombre) {
 		this.nombre = nombre;
-		lista = new LinkedList<Object>();
+		lista = new LinkedList<T>();
 	}
 
-	public void addObjeto(Object o) throws EquipoException {
+	public void addObjeto(T o) throws EquipoException {
 		if(lista.contains(o)) {
 			throw new EquipoException("El objeto ya forma parte del equipo");
 		}else {
@@ -22,14 +22,14 @@ public class EquipoGenerico {
 		} 		
 	}
 	
-	public void delObjeto(Object o) throws EquipoException{
+	public void delObjeto(T o) throws EquipoException{
 		if(!lista.contains(o)) {
 			throw new EquipoException("El objeto no se puede eliminar porque no forma parte del equipo");
 		}else {
 			lista.remove(o);
 		} 
 	}
-	public Object objetoPertenece(Object o) {
+	public Object objetoPertenece(T o) {
 		Object salida;
 		if(!lista.contains(o)) {
 			salida = null;
@@ -47,12 +47,12 @@ public class EquipoGenerico {
 		return salida.toString();
 	}
 	
-	public EquipoGenerico unirEquipos(EquipoGenerico b) throws EquipoException {
+	public EquipoGenerico<T> unirEquipos(EquipoGenerico<T> b) throws EquipoException {
 		StringBuilder nombre = new StringBuilder(this.nombre);
 		nombre.append("-" + b.getNombre());
-		EquipoGenerico salida = new EquipoGenerico(nombre.toString());
+		EquipoGenerico<T> salida = new EquipoGenerico<T>(nombre.toString());
 		//añadir obj equipo a
-		Iterator<Object> iterador = lista.iterator();
+		Iterator<T> iterador = lista.iterator();
 		while(iterador.hasNext()) {
 			salida.addObjeto(iterador.next());
 		}
@@ -64,18 +64,18 @@ public class EquipoGenerico {
 		return salida;
 	}
 	
-	public EquipoGenerico interseccionEquipos(EquipoGenerico e) throws EquipoException {
-		StringBuilder nombre = new StringBuilder(this.nombre);
-		nombre.append("-" + e.getNombre() + " Intersección");
-		EquipoGenerico salida = new EquipoGenerico(nombre.toString());
-		//recorro los alumnos y añado al nuevo equipo si estan en el otro equipo
-		for(Object o: lista) {
-			if(e.objetoPertenece(o)!=null) {
-				salida.addObjeto(o);
-			}
-		}
-		return salida;
-	}
+//	public EquipoGenerico<T> interseccionEquipos(EquipoGenerico<T> e) throws EquipoException {
+//		StringBuilder nombre = new StringBuilder(this.nombre);
+//		nombre.append("-" + e.getNombre() + " Intersección");
+//		EquipoGenerico salida = new EquipoGenerico(nombre.toString());
+//		//recorro los alumnos y añado al nuevo equipo si estan en el otro equipo
+//		for(Object o: lista) {
+//			if(e.objetoPertenece(o)!=null) {
+//				salida.addObjeto(o);
+//			}
+//		}
+//		return salida;
+//	}
 	
 	public String getNombre() {
 		return nombre;

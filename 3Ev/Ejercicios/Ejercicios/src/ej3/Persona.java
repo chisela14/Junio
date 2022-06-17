@@ -8,9 +8,9 @@ import java.util.Objects;
 
 public abstract class Persona {
 	
-	protected String nombre;
-	protected String dni;
-	protected LinkedList<Mensaje> recibidos;
+	private String nombre;
+	private String dni;
+	private LinkedList<Mensaje> recibidos;
 	
 	public Persona(String nombre, String dni) {
 		this.nombre = nombre;
@@ -18,9 +18,12 @@ public abstract class Persona {
 		this.recibidos = new LinkedList<>();
 	}
 
-	protected abstract void enviarMensaje(Persona destino, String textoMensaje) throws PersonaException;
+	public void enviarMensaje(Persona destino, String textoMensaje) throws PersonaException{
+		Mensaje m = new Mensaje(textoMensaje, this);
+		destino.recibidos.add(m);
+	}
 	
-	protected String mostrarBuzon() throws PersonaException {
+	public String mostrarBuzon() throws PersonaException {
 		StringBuilder salida = new StringBuilder();
 		if(recibidos.isEmpty()) {
 			throw new PersonaException("No hay mensajes");
@@ -38,12 +41,12 @@ public abstract class Persona {
 		return salida.toString();
 		}
 	
-	protected String mostrarBuzonOrdenado() throws PersonaException {
+	public String mostrarBuzonOrdenado() throws PersonaException {
 		Collections.sort(recibidos);
 		return mostrarBuzon();
 	}
 	
-	protected void delMensaje(int pos) throws PersonaException {
+	public void delMensaje(int pos) throws PersonaException {
 		if(recibidos.get(pos)==null) {
 			throw new PersonaException("No existe ningún mensaje con ese número");
 		}else {
@@ -51,15 +54,15 @@ public abstract class Persona {
 		}
 	}
 	
-	protected String encontrarMensajes(String frase) throws PersonaException {
+	public String encontrarMensajes(String frase) throws PersonaException {
 		StringBuilder salida = new StringBuilder();
 		ArrayList<Mensaje> encontrados = new ArrayList<>();
 		//crear lista con los mensajes
 		for(Mensaje m: recibidos) {
 			if(m.getTexto().contains(frase)) {
-				encontrados.add(m);
+				salida.append(m.toString() + "\n");
 			}
-		}
+		}// Revisar
 		if(encontrados.isEmpty()) {
 			throw new PersonaException("No se han encontrado mensajes que contengan esa frase");
 		}else {
@@ -76,6 +79,9 @@ public abstract class Persona {
 		return nombre;
 	}
 
+	public String getDni() {
+		return dni;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(dni);

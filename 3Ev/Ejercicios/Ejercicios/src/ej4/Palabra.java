@@ -6,9 +6,9 @@ import java.util.Objects;
 public class Palabra implements Comparable<Palabra>{
 	
 	private String nombre;
-	ArrayList<Significado> significados;
+	private ArrayList<String> significados;
 	
-	public Palabra(String nombre, Significado significado) {
+	public Palabra(String nombre, String significado) {
 		this.nombre = nombre;
 		significados = new ArrayList<>();
 		significados.add(significado);
@@ -18,10 +18,30 @@ public class Palabra implements Comparable<Palabra>{
 		return nombre;
 	}
 
-	public ArrayList<Significado> getSignificados() {
-		return significados;
+	// Devuelve un String con significado
+	public String getSignificados() {
+		StringBuilder resultado = new StringBuilder();
+		for (String aux: significados) {
+			resultado.append(aux);
+		}
+		return resultado.toString();
 	}
-
+	//ad significado
+	public void addSignificado(String str) throws PalabraException {
+		if(significados.contains(str)) {
+			throw new PalabraException("El significado ya está guardado");
+		}else {
+			significados.add(str);
+		}
+	}
+	public void delSignificado(String str) throws PalabraException {
+		if(!significados.contains(str)) {
+			throw new PalabraException("No se puede borrar porque no está guardado");
+		}else {
+			significados.remove(str);
+		}
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(nombre);

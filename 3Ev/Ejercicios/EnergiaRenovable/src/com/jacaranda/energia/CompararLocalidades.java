@@ -6,7 +6,11 @@ public class CompararLocalidades implements Comparator<Generador> {
 
 	@Override
 	public int compare(Generador o1, Generador o2) {
-		return o1.getLocalidad().compareTo(o2.getLocalidad());
+		int resultado = o1.getLocalidad().compareTo(o2.getLocalidad());
+		if (resultado == 0) {
+			resultado = o1.compareTo(o2); // Es por fecha
+		}
+		return resultado;
 	}
 
 }

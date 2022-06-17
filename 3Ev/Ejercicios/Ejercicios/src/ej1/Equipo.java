@@ -30,6 +30,7 @@ public class Equipo {
 			alumnos.remove(a);
 		} 
 	}
+	//revisar(como mhistorial)
 	public Alumno alumnoPertenece(Alumno a) {
 		Alumno salida = null;
 		if(alumnos.contains(a)) {

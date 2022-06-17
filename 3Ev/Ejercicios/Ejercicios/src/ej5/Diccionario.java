@@ -7,19 +7,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import ej4.Palabra;
-import ej4.Significado;
 import ej4.DiccionarioException;
 
 public class Diccionario {
 	private String nombre;
-	private HashMap<Palabra, ArrayList<Significado>> palabras;
+	private HashMap<String,  ArrayList<String> > palabras;
 	
 	public Diccionario(String nombre) {
 		this.nombre = nombre;
 		palabras = new HashMap<>();
 	}
 	
-	private Palabra conseguirPalabra(Palabra p) {
+	private Palabra conseguirPalabra(String p) {
 		Palabra salida = null;
 		boolean encontrado = false;
 		while(!encontrado) {
@@ -33,7 +32,19 @@ public class Diccionario {
 		return salida;
 	}
 	
-	public void addPalabra(Palabra p) {
+	public void addPalabra(String p, String s) {
+		ArrayList<String> significados = palabras.get(p);
+		if (p == null) {
+			// No existe lo tengo que añadir
+			significados = new ArrayList<String>();
+			significados.add(s);
+			palabras.put(p, significados);
+		}else {
+			//Comprobar que no esté el significado y si no lanzar exception
+			significados.add(s);
+		}
+		
+		
 		if(palabras.contains(p)) {
 			Palabra p2 = conseguirPalabra(p);
 			Significado s2 = p.getSignificados().get(0);

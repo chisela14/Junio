@@ -4,8 +4,8 @@ public class MainGenerico {
 
 	public static void main(String[] args) throws EquipoException {
 		
-		EquipoGenerico a = new EquipoGenerico("A");
-		EquipoGenerico b = new EquipoGenerico("B");
+		EquipoGenerico<Integer> a = new EquipoGenerico<Integer>("A");
+		EquipoGenerico<> b = new EquipoGenerico("B");
 		
 		//cambiar alumno por integer
 		Integer pepe = new Integer(1);

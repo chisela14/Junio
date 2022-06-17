@@ -10,19 +10,18 @@ public class Alumno extends Persona {
 	}
 
 	@Override
-	protected void enviarMensaje(Persona destino, String textoMensaje) throws PersonaException {
+	public void enviarMensaje(Persona destino, String textoMensaje) throws PersonaException {
 		if(edad<18 && destino instanceof Alumno) {
 			throw new PersonaException("Los alumnos menores de edad solo pueden enviar mensajes a profesores");
 		}else {
-			Mensaje m = new Mensaje(textoMensaje, this);
-			destino.recibidos.add(m);
+			super.enviarMensaje(destino, textoMensaje);
 		}
 
 	}
 
 	@Override
 	public String toString() {
-		return "Alumno [edad=" + edad + ", nombre=" + nombre + ", dni=" + dni +"]";
+		return "Alumno [edad=" + edad + ", nombre=" + super.getNombre() + ", dni=" + super.getDni() +"]";
 	}
 	
 
