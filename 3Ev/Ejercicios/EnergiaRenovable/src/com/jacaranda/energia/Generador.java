@@ -5,11 +5,11 @@ import java.util.Objects;
 
 public abstract class Generador implements Monetizable, Comparable<Generador>{
 	
-	protected final int CODIGO;
+	private final int CODIGO;
 	protected static int codSiguiente =1;
-	protected LocalDate fechaInicio;
-	protected String localidad;
-	protected double potencia;
+	private LocalDate fechaInicio;
+	private String localidad;
+	private double potencia;
 	
 	protected Generador(LocalDate fechaInicio, String localidad, double potencia) {
 		CODIGO = codSiguiente;

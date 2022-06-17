@@ -39,16 +39,16 @@ public class GeneradorSolar extends Generador{
 	public void setTipo(TipoGeneradorSolar tipo) {
 		this.tipo = tipo;
 	}
-
+	//este se deberia poner en generador ya que tienen en comun precioEnergia*potencia?
 	@Override
 	public Double dinero(double precioEnergia) {
-		return precioEnergia*potencia*numPaneles;
+		return precioEnergia*getPotencia()*numPaneles;
 	}
 
 	@Override
 	public String toString() {
-		return "GeneradorSolar [coeficienteSolar=" + numPaneles/metros + ", tipo=" + tipo + ", CODIGO=" + CODIGO + ", fechaInicio="
-				+ fechaInicio + ", localidad=" + localidad + ", potencia=" + potencia + "]";
+		return "GeneradorSolar [coeficienteSolar=" + numPaneles/metros + ", tipo=" + tipo + ", CODIGO=" + getCODIGO() + ", fechaInicio="
+				+ getFechaInicio() + ", localidad=" + getLocalidad() + ", potencia=" + getPotencia() + "]";
 	}
 
 

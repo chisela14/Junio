@@ -15,7 +15,7 @@ public class Empresa {
 	
 	public void addGenerador(Generador g) throws EmpresaException {
 		if(generadores.contains(g)) {
-			throw new EmpresaException("El generador ya est� registrado en la empresa");
+			throw new EmpresaException("El generador ya está registrado en la empresa");
 		}else {
 			generadores.add(g);
 		}
@@ -34,12 +34,14 @@ public class Empresa {
 	public String mostrarGenLocalidad() {
 		CompararLocalidades comp = new CompararLocalidades();
 		Collections.sort(generadores, comp);
+		/*
 		StringBuilder salida = new StringBuilder();
 		Iterator<Generador> itr = generadores.iterator();
 		while(itr.hasNext()) {
 			salida.append(itr.next().toString()+ System.lineSeparator());
 		}
-		return salida.toString();
+		return salida.toString();*/
+		return mostrarGeneradores();
 	}
 	
 	public String mostrarGenEolicos() {
@@ -54,21 +56,18 @@ public class Empresa {
 	}
 	
 	public void delGenerador(int cod) throws EmpresaException {
-		Generador borrar = null;
 		boolean encontrado = false;
-		//cambiar
-		while(!encontrado) {
-			for(Generador g: generadores) {
+		Iterator<Generador> itr = generadores.iterator();
+		while(itr.hasNext() && !encontrado) {
+			Generador g = itr.next();
 				if(g.getCODIGO()==cod) {
-					borrar = g;
+					generadores.remove(g);
 					encontrado = true;
 				}
-			}
-			if(borrar== null) {
-				throw new EmpresaException("No hay ning�n generador en la empresa con ese c�digo");
-			}
 		}
-		generadores.remove(borrar);
+		if(!encontrado) {
+			throw new EmpresaException("No hay ningún generador en la empresa con ese código");
+		}
 	}
 	
 	//no me queda claro que es el total de energia
@@ -84,7 +83,9 @@ public class Empresa {
 	
 	public boolean existeGenerador(String loc, int cod) {
 		boolean existe = false;
-		for(Generador g: generadores) {
+		Iterator<Generador> itr = generadores.iterator();
+		while(itr.hasNext() && !existe) {
+			Generador g = itr.next();
 			if(g.getLocalidad().equals(loc) && g.getCODIGO()==cod) {
 				existe = true;
 			}

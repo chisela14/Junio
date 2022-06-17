@@ -21,13 +21,13 @@ public class GeneradorEolico extends Generador {
 
 	@Override
 	public Double dinero(double precioEnergia) {
-		return precioEnergia*potencia*numAspas;
+		return precioEnergia*super.getPotencia()*numAspas;
 	}
 
 	@Override
 	public String toString() {
-		return "GeneradorEolico [numAspas=" + numAspas + ", CODIGO=" + CODIGO + ", fechaInicio=" + fechaInicio
-				+ ", localidad=" + localidad + ", potencia=" + potencia + "]";
+		return "GeneradorEolico [numAspas=" + numAspas + ", CODIGO=" + super.getCODIGO() + ", fechaInicio=" + super.getFechaInicio()
+				+ ", localidad=" + super.getLocalidad() + ", potencia=" + super.getPotencia() + "]";
 	}
 
 }

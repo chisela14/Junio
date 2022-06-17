@@ -1,8 +1,13 @@
-package com.jacaranda.energia;
+package com.jacaranda.principal;
 
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import com.jacaranda.energia.Empresa;
+import com.jacaranda.energia.GeneradorEolico;
+import com.jacaranda.energia.GeneradorSolar;
+import com.jacaranda.energia.TipoGeneradorSolar;
 
 public class Main {
 	
@@ -11,8 +16,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		String menu = "1. Añadir generador solar\n2. Añadir generador eólico\n3. Mostrar generadores\n4. Mostrar generadores ordenados por localidad\n"
-				+ "5. Mostrar generadores eólicos\n6. Borrar generador\n7. ";
+		String menu = "1. AÃ±adir generador solar\n2. AÃ±adir generador eÃ³lico\n3. Mostrar generadores\n4. Mostrar generadores ordenados por localidad\n"
+				+ "5. Mostrar generadores eÃ³licos\n6. Borrar generador\n7. ";
 		
 		boolean salir = false;
 		do {
@@ -27,8 +32,8 @@ public class Main {
 					fecha = pedirFechaInicio();
 					localidad = pedirCadena("la localidad");
 					potencia = pedirDouble("la potencia");
-					Double metros = pedirDouble("el número de metros");
-					int numPaneles = pedirInt("el número de paneles");
+					Double metros = pedirDouble("el nÃºmero de metros");
+					int numPaneles = pedirInt("el nÃºmero de paneles");
 					TipoGeneradorSolar tipo = pedirTipo();
 					GeneradorSolar g = new GeneradorSolar(fecha,localidad, potencia, numPaneles, metros, tipo);
 					try {
@@ -42,7 +47,7 @@ public class Main {
 					fecha = pedirFechaInicio();
 					localidad = pedirCadena("la localidad");
 					potencia = pedirDouble("la potencia");
-					int numAspas = pedirInt("el número de aspas");
+					int numAspas = pedirInt("el nÃºmero de aspas");
 					GeneradorEolico g = new GeneradorEolico(fecha, localidad, potencia, numAspas);
 					try {
 						e.addGenerador(g);
@@ -65,7 +70,7 @@ public class Main {
 				}
 				case(6):{
 					System.out.println("Estos son los generadores: " + e.mostrarGeneradores());
-					int cod = pedirInt("el código del generador a borrar");
+					int cod = pedirInt("el cÃ³digo del generador a borrar");
 					try {
 						e.delGenerador(cod);
 					}catch(Exception e) {
@@ -74,13 +79,13 @@ public class Main {
 					break;
 				}
 				case(7):{
-					double precio = pedirDouble("el precio de la energía");
+					double precio = pedirDouble("el precio de la energÃ­a");
 					System.out.println("El total de energia suministrada es: " + e.totalEnergia(precio));
 					break;
 				}
 				case(8):{
 					localidad = pedirCadena("la localidad");
-					int cod = pedirInt("el código del generador a buscar");
+					int cod = pedirInt("el cÃ³digo del generador a buscar");
 					boolean b =e.existeGenerador(localidad, cod);
 					if(b) {
 						System.out.println("El generador existe en esa localidad");
@@ -124,7 +129,7 @@ public class Main {
 		return salida;
 	}
 	/*
-	public static void pruebas() throws EmpresaException{
+	pruebas rÃ¡pidas (throws EmpresaException)
 	
 		//mostrar
 		GeneradorEolico ge1 = new GeneradorEolico(LocalDate.parse("2020-10-25"),"Sevilla", 2, 4);
