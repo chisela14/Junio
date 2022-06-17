@@ -6,8 +6,6 @@ public class Profesor extends Persona {
 		super(nombre, dni);
 	}
 
-	
-
 	@Override
 	public String toString() {
 		return "Profesor [nombre=" + super.getNombre() + ", dni=" + getDni() + "]";

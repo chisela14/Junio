@@ -1,8 +1,6 @@
 package ej3;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Objects;
 
@@ -12,13 +10,14 @@ public abstract class Persona {
 	private String dni;
 	private LinkedList<Mensaje> recibidos;
 	
-	public Persona(String nombre, String dni) {
+	protected Persona(String nombre, String dni) {
 		this.nombre = nombre;
 		this.dni = dni;
 		this.recibidos = new LinkedList<>();
 	}
-
-	public void enviarMensaje(Persona destino, String textoMensaje) throws PersonaException{
+	
+	//tod0 lo común se escribe aquí y únicamente en su hijo lo que sea diferente 
+	public void enviarMensaje(Persona destino, String textoMensaje) throws PersonaException {
 		Mensaje m = new Mensaje(textoMensaje, this);
 		destino.recibidos.add(m);
 	}
@@ -56,23 +55,15 @@ public abstract class Persona {
 	
 	public String encontrarMensajes(String frase) throws PersonaException {
 		StringBuilder salida = new StringBuilder();
-		ArrayList<Mensaje> encontrados = new ArrayList<>();
-		//crear lista con los mensajes
 		for(Mensaje m: recibidos) {
 			if(m.getTexto().contains(frase)) {
 				salida.append(m.toString() + "\n");
 			}
-		}// Revisar
-		if(encontrados.isEmpty()) {
-			throw new PersonaException("No se han encontrado mensajes que contengan esa frase");
-		}else {
-			//mostrar lista
-			Iterator<Mensaje> itr = encontrados.iterator();
-			while(itr.hasNext()) {
-				salida.append(itr.next().toString());
-			}
-			return salida.toString();
 		}
+		if(salida.isEmpty()) {
+			throw new PersonaException("No se han encontrado mensajes que contengan esa frase");
+		}
+		return salida.toString();
 	}
 	
 	public String getNombre() {

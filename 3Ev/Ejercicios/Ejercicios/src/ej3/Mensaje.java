@@ -1,6 +1,7 @@
 package ej3;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Mensaje implements Comparable<Mensaje> {
 	private String texto;
@@ -44,6 +45,24 @@ public class Mensaje implements Comparable<Mensaje> {
 	@Override
 	public int compareTo(Mensaje o) {
 		return this.remitente.getNombre().compareTo(o.getRemitente().getNombre());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(fechaHora, remitente, texto);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Mensaje other = (Mensaje) obj;
+		return Objects.equals(fechaHora, other.fechaHora) && Objects.equals(remitente, other.remitente)
+				&& Objects.equals(texto, other.texto);
 	}
 	
 	
