@@ -18,11 +18,11 @@ public class Palabra implements Comparable<Palabra>{
 		return nombre;
 	}
 
-	// Devuelve un String con significado
+	// Devuelve un String con significados (una palabra siempre tendrá como mínimo uno)
 	public String getSignificados() {
 		StringBuilder resultado = new StringBuilder();
 		for (String aux: significados) {
-			resultado.append(aux);
+			resultado.append(aux + System.lineSeparator());
 		}
 		return resultado.toString();
 	}
@@ -61,7 +61,7 @@ public class Palabra implements Comparable<Palabra>{
 
 	@Override
 	public String toString() {
-		return "Palabra: " + nombre + " Significados: " + significados;
+		return "Palabra: " + nombre + " Significados: " + getSignificados();
 	}
 
 	@Override

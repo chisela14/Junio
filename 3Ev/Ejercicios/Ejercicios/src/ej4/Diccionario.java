@@ -3,6 +3,7 @@ package ej4;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class Diccionario {
 
@@ -15,8 +16,8 @@ public class Diccionario {
 	}
 
 	public void addPalabra(String palabra, String significado) throws PalabraException {
+		//palabra aux con los datos que me pasan
 		Palabra p = new Palabra(palabra, significado);
-
 		if (palabras.contains(p)) {
 			int indice = palabras.indexOf(p);
 			palabras.get(indice).addSignificado(significado);
@@ -25,6 +26,7 @@ public class Diccionario {
 		}
 	}
 
+	//devuelve la palabra buscada con todos los significados
 	public String buscarPalabra(String nombre) throws DiccionarioException {
 		Palabra p = new Palabra(nombre,"");
 		String resultado;
@@ -38,20 +40,15 @@ public class Diccionario {
 		return resultado;
 
 	}
-//REVISAR
+
 	public void borrarPalabra(String nombre) throws DiccionarioException {
-		Palabra borrar = null;
-		for(Palabra p: palabras) {
-			if(p.getNombre().equals(nombre)) {
-				borrar = p;
-			}
-		}
-		if(borrar!= null && palabras.contains(borrar)) {
-			palabras.remove(borrar);
+		Palabra borrar = new Palabra(nombre,"");
+		if(palabras.contains(borrar)) {
+			int indice = palabras.indexOf(borrar);
+			palabras.remove(indice);
 		}else {
 			throw new DiccionarioException("La palabra a borrar no está recogida en el diccionario");
 		}
-	
 	}
 
 	public String palabrasEmpiezanPor(String cadena) throws DiccionarioException {
@@ -82,5 +79,23 @@ public class Diccionario {
 	public String toString() {
 		return "Diccionario: " + nombre + " Número de palabras: " + palabras.size();
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nombre, palabras);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Diccionario other = (Diccionario) obj;
+		return Objects.equals(nombre, other.nombre) && Objects.equals(palabras, other.palabras);
+	}
+	
 
 }

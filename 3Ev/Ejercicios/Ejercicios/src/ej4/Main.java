@@ -23,9 +23,11 @@ public class Main {
 				case(1):{
 					palabra = pedirCadena("la palabra");
 					significado = pedirCadena("el significado");
-					Significado s = new Significado(significado);
-					Palabra p = new Palabra(palabra,s);
-					d.addPalabra(p);
+					try {
+						d.addPalabra(palabra,significado);
+					}catch(Exception e) {
+						System.out.println(e.getMessage());
+					}
 					break;
 				}
 				case(2):{
@@ -40,7 +42,7 @@ public class Main {
 				case(3):{
 					palabra = pedirCadena("la palabra");
 					try {
-						d.buscarPalabra(palabra);
+						d.borrarPalabra(palabra);
 					}catch(Exception e) {
 						System.out.println(e.getMessage());
 					}
@@ -69,27 +71,20 @@ public class Main {
 		return salida;
 	}
 	
-	public void pruebas() throws DiccionarioException {
-		Significado s1 = new Significado("instrumento musical");
-		Palabra teclado = new Palabra("teclado",s1);
-		d.addPalabra(teclado);
+	public void pruebas() throws DiccionarioException, PalabraException {
+		
+		d.addPalabra("teclado","instrumento musical");
 		System.out.println(d.mostrarPalabras());
 		
-		Significado s2 = new Significado("instrumento de escritura");
-		teclado = new Palabra("teclado",s2);
-		d.addPalabra(teclado);
+		
+		d.addPalabra("teclado","instrumento de escritura");
 		System.out.println(d.mostrarPalabras());
 		
-		Significado s3 = new Significado("bebida alcoholica");
-		Palabra tequila = new Palabra("tequila", s3);
-		Significado s4 = new Significado("trozo de tela que cubre una zona");
-		Palabra toldo = new Palabra("toldo", s4);
-		Significado s5 = new Significado("tipo de árbol");
-		Palabra pino = new Palabra("pino", s5);
-		d.addPalabra(tequila);
-		d.addPalabra(toldo);
-		d.addPalabra(pino);
+		d.addPalabra("tequila","bebida alcoholica");
+		d.addPalabra("toldo", "trozo de tela que cubre una zona");
+		d.addPalabra("pino", "tipo de árbol");
 		System.out.println(d.mostrarPalabras());
+		
 		try {
 			System.out.println(d.palabrasEmpiezanPor("te"));
 		} catch (DiccionarioException e) {
