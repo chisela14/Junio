@@ -1,0 +1,889 @@
+﻿{
+    "Url": "www.epdata.es/casos-curados-coronavirus-espana/58d0919c-8ad1-4a3f-9255-55f5b116da23",
+    "Respuesta": {
+        "Id": "58d0919c-8ad1-4a3f-9255-55f5b116da23",
+        "Url": "www.epdata.es/casos-curados-coronavirus-espana/58d0919c-8ad1-4a3f-9255-55f5b116da23",
+        "Titulo": "Evolución de casos curados de coronavirus en España",
+        "Subtitulo": "",
+        "Datos": {
+            "Metricas": [
+                {
+                    "Id": 0,
+                    "Nombre": "Curados",
+                    "SonDatosNumericos": true,
+                    "Fuente": "Ministerio de Sanidad",
+                    "Clasificacion": null,
+                    "Unidad": "Casos",
+                    "Escala": "Unidades",
+                    "EscalaFactorPotencia10": 0,
+                    "Datos": [
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 31 de enero",
+                            "Parametro": "Día 31 de enero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 1 de febrero",
+                            "Parametro": "Día 1 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 2 de febrero",
+                            "Parametro": "Día 2 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 3 de febrero",
+                            "Parametro": "Día 3 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 4 de febrero",
+                            "Parametro": "Día 4 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 5 de febrero",
+                            "Parametro": "Día 5 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 6 de febrero",
+                            "Parametro": "Día 6 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 7 de febrero",
+                            "Parametro": "Día 7 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 8 de febrero",
+                            "Parametro": "Día 8 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 9 de febrero",
+                            "Parametro": "Día 9 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 10 de febrero",
+                            "Parametro": "Día 10 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 11 de febrero",
+                            "Parametro": "Día 11 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 12 de febrero",
+                            "Parametro": "Día 12 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 13 de febrero",
+                            "Parametro": "Día 13 de febrero",
+                            "Valor": 0,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 14 de febrero",
+                            "Parametro": "Día 14 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 15 de febrero",
+                            "Parametro": "Día 15 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 16 de febrero",
+                            "Parametro": "Día 16 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 17 de febrero",
+                            "Parametro": "Día 17 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 18 de febrero",
+                            "Parametro": "Día 18 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 19 de febrero",
+                            "Parametro": "Día 19 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 20 de febrero",
+                            "Parametro": "Día 20 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 21 de febrero",
+                            "Parametro": "Día 21 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 22 de febrero",
+                            "Parametro": "Día 22 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 23 de febrero",
+                            "Parametro": "Día 23 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 24 de febrero",
+                            "Parametro": "Día 24 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 25 de febrero",
+                            "Parametro": "Día 25 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 26 de febrero",
+                            "Parametro": "Día 26 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 27 de febrero",
+                            "Parametro": "Día 27 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 28 de febrero",
+                            "Parametro": "Día 28 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 29 de febrero",
+                            "Parametro": "Día 29 de febrero",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 1 de marzo",
+                            "Parametro": "Día 1 de marzo",
+                            "Valor": 2,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 2 de marzo",
+                            "Parametro": "Día 2 de marzo",
+                            "Valor": 3,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 3 de marzo",
+                            "Parametro": "Día 3 de marzo",
+                            "Valor": 3,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 4 de marzo",
+                            "Parametro": "Día 4 de marzo",
+                            "Valor": 3,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 5 de marzo",
+                            "Parametro": "Día 5 de marzo",
+                            "Valor": 10,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 6 de marzo",
+                            "Parametro": "Día 6 de marzo",
+                            "Valor": 10,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 7 de marzo",
+                            "Parametro": "Día 7 de marzo",
+                            "Valor": 30,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 8 de marzo",
+                            "Parametro": "Día 8 de marzo",
+                            "Valor": 30,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 9 de marzo",
+                            "Parametro": "Día 9 de marzo",
+                            "Valor": 30,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 10 de marzo",
+                            "Parametro": "Día 10 de marzo",
+                            "Valor": 135,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 11 de marzo",
+                            "Parametro": "Día 11 de marzo",
+                            "Valor": 188,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 12 de marzo",
+                            "Parametro": "Día 12 de marzo",
+                            "Valor": 201,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 13 de marzo",
+                            "Parametro": "Día 13 de marzo",
+                            "Valor": 200,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 14 de marzo",
+                            "Parametro": "Día 14 de marzo",
+                            "Valor": 544,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 15 de marzo",
+                            "Parametro": "Día 15 de marzo",
+                            "Valor": 556,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 16 de marzo",
+                            "Parametro": "Día 16 de marzo",
+                            "Valor": 575,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 17 de marzo",
+                            "Parametro": "Día 17 de marzo",
+                            "Valor": 1086,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 18 de marzo",
+                            "Parametro": "Día 18 de marzo",
+                            "Valor": 1160,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 19 de marzo",
+                            "Parametro": "Día 19 de marzo",
+                            "Valor": 1210,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 20 de marzo",
+                            "Parametro": "Día 20 de marzo",
+                            "Valor": 1542,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 21 de marzo",
+                            "Parametro": "Día 21 de marzo",
+                            "Valor": 2131,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 22 de marzo",
+                            "Parametro": "Día 22 de marzo",
+                            "Valor": 2672,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 23 de marzo",
+                            "Parametro": "Día 23 de marzo",
+                            "Valor": 3140,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 24 de marzo",
+                            "Parametro": "Día 24 de marzo",
+                            "Valor": 3697,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 25 de marzo",
+                            "Parametro": "Día 25 de marzo",
+                            "Valor": 5054,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 26 de marzo",
+                            "Parametro": "Día 26 de marzo",
+                            "Valor": 6326,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 27 de marzo",
+                            "Parametro": "Día 27 de marzo",
+                            "Valor": 8491,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 28 de marzo",
+                            "Parametro": "Día 28 de marzo",
+                            "Valor": 10896,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 29 de marzo",
+                            "Parametro": "Día 29 de marzo",
+                            "Valor": 13219,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 30 de marzo",
+                            "Parametro": "Día 30 de marzo",
+                            "Valor": 14823,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 31 de marzo",
+                            "Parametro": "Día 31 de marzo",
+                            "Valor": 16926,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 1 de abril",
+                            "Parametro": "Día 1 de abril",
+                            "Valor": 20023,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 2 de abril",
+                            "Parametro": "Día 2 de abril",
+                            "Valor": 23509,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 3 de abril",
+                            "Parametro": "Día 3 de abril",
+                            "Valor": 26540,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 4 de abril",
+                            "Parametro": "Día 4 de abril",
+                            "Valor": 30173,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 5 de abril",
+                            "Parametro": "Día 5 de abril",
+                            "Valor": 33701,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 6 de abril",
+                            "Parametro": "Día 6 de abril",
+                            "Valor": 35723,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 7 de abril",
+                            "Parametro": "Día 7 de abril",
+                            "Valor": 38620,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 8 de abril",
+                            "Parametro": "Día 8 de abril",
+                            "Valor": 43091,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 9 de abril",
+                            "Parametro": "Día 9 de abril",
+                            "Valor": 47116,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 10 de abril",
+                            "Parametro": "Día 10 de abril",
+                            "Valor": 50860,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 11 de abril",
+                            "Parametro": "Día 11 de abril",
+                            "Valor": 54118,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 12 de abril",
+                            "Parametro": "Día 12 de abril",
+                            "Valor": 57026,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 13 de abril",
+                            "Parametro": "Día 13 de abril",
+                            "Valor": 59165,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 14 de abril",
+                            "Parametro": "Día 14 de abril",
+                            "Valor": 61924,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 15 de abril",
+                            "Parametro": "Día 15 de abril",
+                            "Valor": 65682,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 16 de abril",
+                            "Parametro": "Día 16 de abril",
+                            "Valor": 69461,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 17 de abril",
+                            "Parametro": "Día 17 de abril",
+                            "Valor": 72952,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 18 de abril",
+                            "Parametro": "Día 18 de abril",
+                            "Valor": 74662,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 19 de abril",
+                            "Parametro": "Día 19 de abril",
+                            "Valor": 77357,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 20 de abril",
+                            "Parametro": "Día 20 de abril",
+                            "Valor": 80587,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 21 de abril",
+                            "Parametro": "Día 21 de abril",
+                            "Valor": 82514,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 22 de abril",
+                            "Parametro": "Día 22 de abril",
+                            "Valor": 85915,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 23 de abril",
+                            "Parametro": "Día 23 de abril",
+                            "Valor": 89250,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 24 de abril",
+                            "Parametro": "Día 24 de abril",
+                            "Valor": 92355,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 25 de abril",
+                            "Parametro": "Día 25 de abril",
+                            "Valor": 95708,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 26 de abril",
+                            "Parametro": "Día 26 de abril",
+                            "Valor": 98732,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 27 de abril",
+                            "Parametro": "Día 27 de abril",
+                            "Valor": 100875,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 28 de abril",
+                            "Parametro": "Día 28 de abril",
+                            "Valor": 102548,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 29 de abril",
+                            "Parametro": "Día 29 de abril",
+                            "Valor": 108947,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 30 de abril",
+                            "Parametro": "Día 30 de abril",
+                            "Valor": 112050,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 1 de mayo",
+                            "Parametro": "Día 1 de mayo",
+                            "Valor": 114678,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 2 de mayo",
+                            "Parametro": "Día 2 de mayo",
+                            "Valor": 117248,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 3 de mayo",
+                            "Parametro": "Día 3 de mayo",
+                            "Valor": 118902,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 4 de mayo",
+                            "Parametro": "Día 4 de mayo",
+                            "Valor": 121343,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 5 de mayo",
+                            "Parametro": "Día 5 de mayo",
+                            "Valor": 123486,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 6 de mayo",
+                            "Parametro": "Día 6 de mayo",
+                            "Valor": 126002,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 7 de mayo",
+                            "Parametro": "Día 7 de mayo",
+                            "Valor": 128511,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 8 de mayo",
+                            "Parametro": "Día 8 de mayo",
+                            "Valor": 131148,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 9 de mayo",
+                            "Parametro": "Día 9 de mayo",
+                            "Valor": 133952,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 10 de mayo",
+                            "Parametro": "Día 10 de mayo",
+                            "Valor": 136166,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 11 de mayo",
+                            "Parametro": "Día 11 de mayo",
+                            "Valor": 137139,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 12 de mayo",
+                            "Parametro": "Día 12 de mayo",
+                            "Valor": 138980,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 13 de mayo",
+                            "Parametro": "Día 13 de mayo",
+                            "Valor": 140823,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 14 de mayo",
+                            "Parametro": "Día 14 de mayo",
+                            "Valor": 143374,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 15 de mayo",
+                            "Parametro": "Día 15 de mayo",
+                            "Valor": 144783,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 16 de mayo",
+                            "Parametro": "Día 16 de mayo",
+                            "Valor": 146446,
+                            "Estado": null,
+                            "Notas": null
+                        },
+                        {
+                            "Agno": 2020,
+                            "Periodo": "Día 17 de mayo",
+                            "Parametro": "Día 17 de mayo",
+                            "Valor": 149576,
+                            "Estado": null,
+                            "Notas": null
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
