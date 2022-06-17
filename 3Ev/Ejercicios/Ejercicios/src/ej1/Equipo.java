@@ -30,7 +30,7 @@ public class Equipo {
 			alumnos.remove(a);
 		} 
 	}
-	//revisar(como mhistorial)
+	
 	public Alumno alumnoPertenece(Alumno a) {
 		Alumno salida = null;
 		if(alumnos.contains(a)) {
@@ -39,12 +39,12 @@ public class Equipo {
 			salida = alumnos.get(pos);
 			*/
 			boolean encontrado = false;
-			while(!encontrado) {
-				for(Alumno b: alumnos) {
-					if(b.equals(a)) {
-						salida = b;
-						encontrado = true;
-					}
+			Iterator<Alumno> itr = alumnos.iterator();
+			while(itr.hasNext()&&!encontrado) {
+				Alumno a2= itr.next();
+				if(a2.equals(a)) {
+					salida = a2;
+					encontrado = true;
 				}
 			}
 		}
@@ -60,9 +60,9 @@ public class Equipo {
 	}
 	
 	public Equipo unirEquipos(Equipo b) throws EquipoException {
-		StringBuilder nombre = new StringBuilder(this.nombre);
-		nombre.append("-" + b.getNombre());
-		Equipo salida = new Equipo(nombre.toString());
+		StringBuilder nuevoNombre = new StringBuilder(this.nombre);
+		nuevoNombre.append("-" + b.getNombre());
+		Equipo salida = new Equipo(nuevoNombre.toString());
 		//añadir alumnos equipo a
 		Iterator<Alumno> iterador = alumnos.iterator();
 		while(iterador.hasNext()) {
@@ -77,9 +77,9 @@ public class Equipo {
 	}
 	
 	public Equipo interseccionEquipos(Equipo e) throws EquipoException {
-		StringBuilder nombre = new StringBuilder(this.nombre);
-		nombre.append("-" + e.getNombre() + " Intersección");
-		Equipo salida = new Equipo(nombre.toString());
+		StringBuilder nuevoNombre = new StringBuilder(this.nombre);
+		nuevoNombre.append("-" + e.getNombre() + " Intersección");
+		Equipo salida = new Equipo(nuevoNombre.toString());
 		//recorro los alumnos y añado al nuevo equipo si estan en el otro equipo
 		for(Alumno a: alumnos) {
 			if(e.alumnoPertenece(a)!=null) {
