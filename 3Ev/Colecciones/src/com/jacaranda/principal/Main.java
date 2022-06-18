@@ -9,7 +9,7 @@ import com.jacaranda.partituras.PentagramaException;
 
 public class Main {
 
-	public static void main(String[] args) throws PartituraException, NotaException, PentagramaException {
+	public static void main(String[] args) throws PartituraException, NotaException, PentagramaException, CloneNotSupportedException {
 		ConAutor nuvole = new ConAutor("Nuvole Bianche", "Ludovico Einaudi");
 //		nuvole.addPentagrama(5); exception
 		nuvole.addPentagrama(4);
@@ -29,6 +29,8 @@ public class Main {
 		Nota mi = new Nota("mi", "negra", false);
 		nuvole.modificarPentagrama(2,1, mi);
 		System.out.println(nuvole.mostrarMusica());
+		
+		//BBDD TABLA: NOTA
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.jacaranda.partituras;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Objects;
 
@@ -26,9 +25,9 @@ abstract class Partitura {
 
 	public void addPentagrama(int compas) throws PartituraException {
 		if(compas<2 || compas>4) {
-			throw new PartituraException("Compás no válido, valores de compás válidos: 2, 3, 4");
+			throw new PartituraException("CompÃ¡s no vÃ¡lido, valores de compï¿½s vï¿½lidos: 2, 3, 4");
 		}else if(pentagramas.size()== MAX_PENTAGRAMAS) {
-			throw new PartituraException("No se pueden añadir más pentagramas a la partitura");
+			throw new PartituraException("No se pueden aï¿½adir mï¿½s pentagramas a la partitura");
 		}
 		Pentagrama p = new Pentagrama(compas);
 		pentagramas.add(p);
@@ -39,18 +38,19 @@ abstract class Partitura {
 		if(pentagramas.contains(p)) {
 			pentagramas.remove(p);
 		}else {
-			throw new PartituraException("Esa posición no es válida");
+			throw new PartituraException("Esa posiciï¿½n no es vï¿½lida");
 		}
 	}
 	
-	//se me olvidó poner en el uml el parámetro Pentagrama
+	//se me olvidï¿½ poner en el uml el parï¿½metro Pentagrama
 	//no especifique que podria modificarse entero o solo una nota
-	public void modificarPentagrama(int posicion, Pentagrama nuevo) {
-		pentagramas.set(posicion-1, nuevo);
+	public void modificarPentagrama(int posicion, Pentagrama nuevo) throws CloneNotSupportedException {
+		Pentagrama p = (Pentagrama) nuevo.clone();
+		this.pentagramas.set(posicion-1, p);
 	}
 	
 	public void modificarPentagrama(int posicionP, int posicionN, Nota nueva) {
-		Pentagrama p = pentagramas.get(posicionP-1);
+		Pentagrama p = this.pentagramas.get(posicionP-1);
 		LinkedList<Nota> notas = p.getNotas();
 		notas.set(posicionN-1, nueva);
 	}
@@ -70,7 +70,7 @@ abstract class Partitura {
 			contador ++;
 		}
 		if(pentagramas.size()<= MIN_PENTAGRAMAS) {
-			salida.append("La partitura se encuentra por debajo del número de pentagramas aconsejable");
+			salida.append("La partitura se encuentra por debajo del nï¿½mero de pentagramas aconsejable");
 		}
 		return salida.toString();
 	}
@@ -80,7 +80,7 @@ abstract class Partitura {
 		return "La partitura de " + nombre + " tiene " + pentagramas.size() + " pentagramas.";
 	}
 	
-	//será el mismo para los hijos
+	//serï¿½ el mismo para los hijos
 	@Override
 	public int hashCode() {
 		return Objects.hash(nombre, pentagramas);

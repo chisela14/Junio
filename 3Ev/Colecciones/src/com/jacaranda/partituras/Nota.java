@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Nota {
+public class Nota implements Cloneable{
 	
 	private String nombre;
 	private TipoNota tipo;
@@ -15,7 +15,7 @@ public class Nota {
 		if(!NOMBRES.contains(nombre)) {
 			throw new NotaException("La nota no se ha podido crear puesto que el nombre no es correcto");
 		}else if(!comprobarTipo(tipo)){
-			throw new NotaException("El tipo de nota introducido no está registrado");
+			throw new NotaException("El tipo de nota introducido no estï¿½ registrado");
 		}else {
 			this.nombre = nombre;
 			this.tipo = TipoNota.valueOf(tipo.toUpperCase());
@@ -62,6 +62,17 @@ public class Nota {
 			salida = nombre + " " + tipo;
 		}
 		return salida;
+	}
+	
+	@Override
+	protected Object clone() {
+		Nota obj = null;
+		try {
+			obj = (Nota) super.clone();
+		}catch(CloneNotSupportedException e) {
+			System.out.println("No se puede duplicar");
+		}
+		return obj;
 	}
 	
 	
