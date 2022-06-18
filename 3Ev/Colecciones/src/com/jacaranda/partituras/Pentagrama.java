@@ -58,12 +58,6 @@ public class Pentagrama implements Silenciable{
 		return silenciado;
 	}
 	
-
-	//modificar una nota en el pentagrama
-	public void modificarNota(int posicion, Nota nueva) {
-		notas.set(posicion, nueva);
-	}
-	
 	@Override
 	public void silenciar() {
 		this.silenciado = true;

@@ -46,12 +46,13 @@ abstract class Partitura {
 	//se me olvidó poner en el uml el parámetro Pentagrama
 	//no especifique que podria modificarse entero o solo una nota
 	public void modificarPentagrama(int posicion, Pentagrama nuevo) {
-		Pentagrama p = pentagramas.get(posicion-1);
+		pentagramas.set(posicion-1, nuevo);
+	}
+	
+	public void modificarPentagrama(int posicionP, int posicionN, Nota nueva) {
+		Pentagrama p = pentagramas.get(posicionP-1);
 		LinkedList<Nota> notas = p.getNotas();
-		LinkedList<Nota> notasNuevas = nuevo.getNotas();
-		for(Nota n: notas) {
-			p.modificarNota(notas.indexOf(n), notasNuevas.get(notas.indexOf(n)));
-		}
+		notas.set(posicionN-1, nueva);
 	}
 	
 	public String mostrarMusica() {

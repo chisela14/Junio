@@ -27,8 +27,7 @@ public class Main {
 		nuvole.modificarPentagrama(1, p2);
 		System.out.println(nuvole.mostrarMusica());
 		Nota mi = new Nota("mi", "negra", false);
-		p2 = nuvole.getPentagrama(2);
-		p2.modificarNota(1, mi);
+		nuvole.modificarPentagrama(2,1, mi);
 		System.out.println(nuvole.mostrarMusica());
 	}
 
