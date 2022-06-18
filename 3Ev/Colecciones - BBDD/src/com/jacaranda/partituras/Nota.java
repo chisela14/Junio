@@ -15,7 +15,7 @@ public class Nota implements Cloneable{
 		if(!NOMBRES.contains(nombre)) {
 			throw new NotaException("La nota no se ha podido crear puesto que el nombre no es correcto");
 		}else if(!comprobarTipo(tipo)){
-			throw new NotaException("El tipo de nota introducido no est� registrado");
+			throw new NotaException("El tipo de nota introducido no está registrado");
 		}else {
 			this.nombre = nombre;
 			this.tipo = TipoNota.valueOf(tipo.toUpperCase());

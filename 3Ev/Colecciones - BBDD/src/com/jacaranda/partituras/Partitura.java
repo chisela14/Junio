@@ -25,9 +25,9 @@ abstract class Partitura {
 
 	public void addPentagrama(int compas) throws PartituraException {
 		if(compas<2 || compas>4) {
-			throw new PartituraException("Compás no válido, valores de comp�s v�lidos: 2, 3, 4");
+			throw new PartituraException("Compás no válido, valores de compás váidos: 2, 3, 4");
 		}else if(pentagramas.size()== MAX_PENTAGRAMAS) {
-			throw new PartituraException("No se pueden a�adir m�s pentagramas a la partitura");
+			throw new PartituraException("No se pueden añadir más pentagramas a la partitura");
 		}
 		Pentagrama p = new Pentagrama(compas);
 		pentagramas.add(p);
@@ -38,13 +38,13 @@ abstract class Partitura {
 		if(pentagramas.contains(p)) {
 			pentagramas.remove(p);
 		}else {
-			throw new PartituraException("Esa posici�n no es v�lida");
+			throw new PartituraException("Esa posición no es válida");
 		}
 	}
 	
-	//se me olvid� poner en el uml el par�metro Pentagrama
+	//se me olvidó poner en el uml el parámetro Pentagrama
 	//no especifique que podria modificarse entero o solo una nota
-	public void modificarPentagrama(int posicion, Pentagrama nuevo) throws CloneNotSupportedException {
+	public void modificarPentagrama(int posicion, Pentagrama nuevo) {
 		Pentagrama p = (Pentagrama) nuevo.clone();
 		this.pentagramas.set(posicion-1, p);
 	}
@@ -70,7 +70,7 @@ abstract class Partitura {
 			contador ++;
 		}
 		if(pentagramas.size()<= MIN_PENTAGRAMAS) {
-			salida.append("La partitura se encuentra por debajo del n�mero de pentagramas aconsejable");
+			salida.append("La partitura se encuentra por debajo del número de pentagramas aconsejable");
 		}
 		return salida.toString();
 	}
@@ -80,7 +80,7 @@ abstract class Partitura {
 		return "La partitura de " + nombre + " tiene " + pentagramas.size() + " pentagramas.";
 	}
 	
-	//ser� el mismo para los hijos
+	// mismo para los hijos
 	@Override
 	public int hashCode() {
 		return Objects.hash(nombre, pentagramas);

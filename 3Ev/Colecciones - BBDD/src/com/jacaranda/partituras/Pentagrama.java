@@ -29,20 +29,29 @@ public class Pentagrama implements Silenciable, Cloneable{
 
 	public void addNota(String nombre, String tipo, boolean alta) throws NotaException, PentagramaException{
 		Nota nota = new Nota(nombre,tipo,alta);
-		//si el pentagrama esta vacio se a�ade la nota directamente
+		//si el pentagrama esta vacio se añade la nota directamente
 		if(notas.isEmpty()) {
 			notas.add(nota);
-		}else { //sino hay que comprobar que se puede a�adir seg�n la duraci�n de la nota
+		}else { //sino hay que comprobar que se puede añadir según la duración de la nota
 			//calcular valor actual del pentagrama
 			int valor = 0;
 			for(Nota n: notas) {
 				valor = valor + n.getTipo().getDuracion();
-			}//a�adir o no en funci�n de la condici�n
+			}//añadir o no en función de la condición
 			if(valor==this.compas || nota.getTipo().getDuracion()+ valor > this.compas) {
-				throw new PentagramaException("No se puede a�adir la nota porque sobrepasa el l�mite del comp�s");
+				throw new PentagramaException("No se puede añadir la nota porque sobrepasa el límite del compás");
 			}else {
 				notas.add(nota);
 			}
+		}
+	}
+	//para probar a borrar una nota, puede que borre este método luego
+	public void delNota(int pos) throws PentagramaException{
+		Nota n = this.notas.get(pos-1);
+		if(this.notas.contains(n)) {
+			this.notas.remove(n);
+		}else {
+			throw new PentagramaException("Esa posición no es válida");
 		}
 	}
 
