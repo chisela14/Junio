@@ -45,15 +45,6 @@ public class Pentagrama implements Silenciable, Cloneable{
 			}
 		}
 	}
-	//para probar a borrar una nota, puede que borre este método luego
-	public void delNota(int pos) throws PentagramaException{
-		Nota n = this.notas.get(pos-1);
-		if(this.notas.contains(n)) {
-			this.notas.remove(n);
-		}else {
-			throw new PentagramaException("Esa posición no es válida");
-		}
-	}
 
 	public String mostrarNotas() {
 		StringBuilder salida = new StringBuilder();

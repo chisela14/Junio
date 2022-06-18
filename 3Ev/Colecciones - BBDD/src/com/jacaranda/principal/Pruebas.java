@@ -2,6 +2,7 @@ package com.jacaranda.principal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -43,14 +44,19 @@ public class Pruebas {
 		
 		Statement st = c.createStatement();
 		Nota mi = new Nota("mi", "negra", false);
-		String insert = "INSERT INTO NOTA VALUES('mi', 'NEGRA', 0)";
-		st.executeQuery(insert);
+		//Una vez ejecutado ya está en la base de datos así que si vuelvo a ejecutar el main me saltara
+		//la constraint de pk
+		//String insert = "INSERT INTO NOTA VALUES('mi', 'NEGRA', 0)";
+		//st.executeQuery(insert);
 		nuvole.modificarPentagrama(2,1, mi);
 		System.out.println(nuvole.mostrarMusica());
 		
 		
 		String consulta = "SELECT* FROM NOTA";
-		st.executeQuery(consulta);
+		//devuelve un set, si quiero ver el resultado tendre que recorrerlo con iterator
+		ResultSet resultado = st.executeQuery(consulta);
+		
+		c.close();
 
 	}
 
