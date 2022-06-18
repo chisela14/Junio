@@ -8,15 +8,11 @@ public class Pentagrama implements Silenciable, Cloneable{
 	private int compas;
 	private LinkedList<Nota> notas;
 	private boolean silenciado;
-	private final int CODIGO;
-	private static int codSiguiente = 1;
 
 	public Pentagrama(int compas) {
 		this.compas = compas;
 		notas = new LinkedList<>();
 		this.silenciado = false;
-		this.CODIGO = codSiguiente;
-		codSiguiente++;
 	}
 	
 	public int getCompas() {
@@ -29,10 +25,6 @@ public class Pentagrama implements Silenciable, Cloneable{
 	
 	public LinkedList<Nota> getNotas() {
 		return notas;
-	}
-
-	public int getCODIGO() {
-		return CODIGO;
 	}
 
 	public void addNota(String nombre, String tipo, boolean alta) throws NotaException, PentagramaException{
@@ -74,7 +66,7 @@ public class Pentagrama implements Silenciable, Cloneable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(CODIGO);
+		return Objects.hash(compas, notas);
 	}
 
 	@Override
@@ -86,7 +78,7 @@ public class Pentagrama implements Silenciable, Cloneable{
 		if (getClass() != obj.getClass())
 			return false;
 		Pentagrama other = (Pentagrama) obj;
-		return CODIGO == other.CODIGO;
+		return compas == other.compas && Objects.equals(notas, other.notas);
 	}
 
 	@Override
