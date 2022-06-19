@@ -2,7 +2,7 @@ package com.jacaranda.casetas;
 
 import java.util.Objects;
 
-public class Caseta {
+public class Caseta implements Comparable<Caseta>{
 
 	private String titulo;
 	private String calle;
@@ -68,7 +68,7 @@ public class Caseta {
 		return numero;
 	}
 
-	public int getModulo() {
+	public int getModulos() {
 		return modulos;
 	}
 
@@ -109,6 +109,11 @@ public class Caseta {
 	public String toString() {
 		return "Caseta [titulo=" + titulo + ", calle=" + calle + ", numero=" + numero + ", modulos=" + modulos
 				+ ", clase=" + clase + ", entidad=" + entidad + ", id=" + id + ", idCalle=" + idCalle + "]";
+	}
+
+	@Override
+	public int compareTo(Caseta o) {
+		return this.getCalle().compareTo(o.getCalle());
 	}
 
 }

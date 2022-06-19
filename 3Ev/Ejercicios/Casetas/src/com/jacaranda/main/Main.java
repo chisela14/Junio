@@ -1,6 +1,9 @@
 package com.jacaranda.main;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -12,11 +15,17 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.jacaranda.casetas.Caseta;
+import com.jacaranda.casetas.CompararNumeros;
 
 public class Main {
+	//la opcion 7 es la unica que no funciona, deberia borrar y modificar la caseta del xml tambien?, el json no se crea entero
 	
 	public static Scanner teclado = new Scanner(System.in);
 	
@@ -24,55 +33,162 @@ public class Main {
 				+ "2. Mostrar todas las casetas de tipo familiar. \n"
 				+ "3. Mostrar todas las casetas de tipo Distrito. \n"
 				+ "4. Mostrar todas las casetas que no sean ni familiares ni distritos. \n"
-				+ "5. Mostrar para cada una de las calles del recinto ferial el número de casetas de tipo familiar que existen. \n"
-				+ "6. Mostrar para cada una de las calles del recinto ferial el número de casetas de tipo Distrito que existen. \n"
+				+ "5. Mostrar para cada una de las calles del recinto ferial el nÃºmero de casetas de tipo familiar que existen. \n"
+				+ "6. Mostrar para cada una de las calles del recinto ferial el nÃºmero de casetas de tipo Distrito que existen. \n"
 				+ "7. Eliminar una caseta.\n" 
 				+ "8. Salir. ";
 	
 	private static ArrayList<Caseta> casetas = new ArrayList<>();
+	private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	
 	public static void main(String[] args) {
 		
 		leerFichero();
 		
-		//crear json
-		Gson gson = new Gson();
-		
-		
-		//menú
+		//menÃº
 		boolean salir = false;
 		do {
 			System.out.println(MENU);
 			int opcion = Integer.parseInt(teclado.nextLine());
 			switch(opcion) {
 				case(1):{
+					String calle = pedirCadena("la calle");
+					Iterator<Caseta> itr = casetas.iterator();
+					StringBuilder salida = new StringBuilder();
+					while (itr.hasNext()) {
+						Caseta c = itr.next();
+						if (c.getCalle().equals(calle)) {
+							salida.append(c.toString() + System.lineSeparator());
+						}
+					}
+					System.out.println(salida.toString());
 					break;
 				}
 				case(2):{
+					Iterator<Caseta> itr = casetas.iterator();
+					StringBuilder salida = new StringBuilder();
+					while (itr.hasNext()) {
+						Caseta c = itr.next();
+						if (c.getClase().equals("FAMILIAR")) {
+							salida.append(c.toString() + System.lineSeparator());
+						}
+					}
+					System.out.println(salida.toString());
 					break;
 				}
 				case(3):{
+					Iterator<Caseta> itr = casetas.iterator();
+					StringBuilder salida = new StringBuilder();
+					while (itr.hasNext()) {
+						Caseta c = itr.next();
+						if (c.getClase().equals("DISTRITO")) {
+							salida.append(c.toString() + System.lineSeparator());
+						}
+					}
+					System.out.println(salida.toString());
 					break;
 				}
 				case(4):{
+					Iterator<Caseta> itr = casetas.iterator();
+					StringBuilder salida = new StringBuilder();
+					while (itr.hasNext()) {
+						Caseta c = itr.next();
+						if (!c.getClase().equals("DISTRITO") && !c.getClase().equals("FAMILIAR")) {
+							salida.append(c.toString() + System.lineSeparator());
+						}
+					}
+					System.out.println(salida.toString());
 					break;
 				}
-				case(5):{
+				case(5):{//mostrar nÃºmero de casetas de tipo familiar en cada calle
+					HashSet<String> calles = conseguirCalles();
+					StringBuilder salida = new StringBuilder();
+					for(String s: calles) {
+						salida.append("La calle " + s + " tiene ");
+						int contador = 0;
+						Iterator<Caseta> itr = casetas.iterator();
+						while (itr.hasNext()) {
+							Caseta c = itr.next();
+							if (c.getCalle().equals(s) && c.getClase().equals("FAMILIAR")) {
+								contador++;
+							}
+						}
+						salida.append(contador + " casetas." + System.lineSeparator());
+						System.out.println(salida.toString());
+					}
 					break;
 				}
 				case(6):{
+					HashSet<String> calles = conseguirCalles();
+					StringBuilder salida = new StringBuilder();
+					for(String s: calles) {
+						salida.append("La calle " + s + " tiene ");
+						int contador = 0;
+						Iterator<Caseta> itr = casetas.iterator();
+						while (itr.hasNext()) {
+							Caseta c = itr.next();
+							if (c.getCalle().equals(s) && c.getClase().equals("DISTRITO")) {
+								contador++;
+							}
+						}
+						salida.append(contador + " casetas." + System.lineSeparator());
+						System.out.println(salida.toString());
+					}
 					break;
 				}
-				case(7):{
+				case(7):{//borrar caseta y cambiar las posteriores, descenderan de numero segun los modulos de la eliminada
+					String calle = pedirCadena("la calle de la caseta a eliminar");
+					int num = Integer.parseInt(pedirCadena("el nÃºmero de la caseta a eliminar"));
+					HashSet<String> calles = conseguirCalles();
+					Iterator<String> callesItr = calles.iterator();
+					boolean calleEncontrada = false;
+					while(callesItr.hasNext() && !calleEncontrada) {
+						String s = callesItr.next();
+						if(s.equalsIgnoreCase(calle)){
+							Iterator<Caseta> itr = casetas.iterator();
+							while (itr.hasNext()) {
+								Caseta c = itr.next();
+								if (c.getCalle().equals(s)) {
+									int numMenos = 0;
+									if(c.getNumero() == num) {
+										numMenos = c.getModulos();
+										casetas.remove(c);
+									}else if(c.getNumero() > num) {
+										c.setNumero(c.getNumero()- numMenos);
+									}
+								}
+							}
+							calleEncontrada = true;
+						}
+					}
 					break;
 				}
 				case(8):{
+					System.out.println("Se guardaran los cambios en el fichero json si los hubiera");
+					CompararNumeros comp = new CompararNumeros();
+					Collections.sort(casetas, comp);
+					escribirJson();
 					salir = true;
 					break;
 				}
 			}
-			
 		}while(!salir);
+	}
+	private static String pedirCadena(String cadena) {
+		System.out.println("Introduce " + cadena + ": ");
+		String result = teclado.nextLine();
+		return result;
+	}
+	private static HashSet<String> conseguirCalles(){
+		Iterator<Caseta> itr = casetas.iterator();
+		HashSet<String> calles = new HashSet<>();
+		while (itr.hasNext()) {
+			Caseta c = itr.next();
+			if (!calles.contains(c.getCalle())) {
+				calles.add(c.getCalle());
+			}
+		}
+		return calles;
 	}
 	
 	public static void leerFichero() {
@@ -136,5 +252,23 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	
+	public static void escribirJson() {
+		//crear fichero json
+		File jsonFile = new File("ficheros\\casetasjson.json");
+		try{
+			if(jsonFile.createNewFile()) {
+				System.out.println("Se ha creado el fichero json correspondiente");
+			}
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		try {
+			gson.toJson(casetas, new FileWriter(jsonFile));
+		} catch (JsonIOException e) {
+			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }
