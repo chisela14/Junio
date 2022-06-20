@@ -113,7 +113,16 @@ public class Caseta implements Comparable<Caseta>{
 
 	@Override
 	public int compareTo(Caseta o) {
-		return this.getCalle().compareTo(o.getCalle());
+		int resultado = this.getCalle().compareTo(o.getCalle());
+		if(resultado==0) {
+			if(this.getNumero()>o.getNumero()) {
+				resultado = 1;
+			}
+			else if(this.getNumero()<o.getNumero()) {
+				resultado = -1;
+			}
+		}
+		return resultado;
 	}
 
 }
