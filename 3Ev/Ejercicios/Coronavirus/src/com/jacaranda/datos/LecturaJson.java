@@ -1,16 +1,17 @@
 package com.jacaranda.datos;
 
+import java.util.ArrayList;
 
 public class LecturaJson {
-	ClaseDatos Datos;
+	ArrayList<Datos> Datos;
 
-	public ClaseDatos getDatos() {
+	public ArrayList<Datos> getDatos() {
 		return Datos;
 	}
 
-	public void setDatos(ClaseDatos datos) {
+	public void setDatos(ArrayList<Datos> datos) {
 		Datos = datos;
 	}
-	
+
 
 }

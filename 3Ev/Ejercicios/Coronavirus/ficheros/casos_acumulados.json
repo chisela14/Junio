@@ -16,7 +16,7 @@
                     "Unidad": "Tasa de incidencia acumulada en los últimos 14 días por 100.000 habitantes",
                     "Escala": "Unidades",
                     "EscalaFactorPotencia10": 0,
-                    "Datos": [
+                    "Informacion": [
                         {
                             "Agno": 2022,
                             "Periodo": "Día 1 de abril",

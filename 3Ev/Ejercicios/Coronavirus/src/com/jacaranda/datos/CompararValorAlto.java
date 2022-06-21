@@ -2,10 +2,10 @@ package com.jacaranda.datos;
 
 import java.util.Comparator;
 
-public class CompararValorAlto implements Comparator<Datos> {
+public class CompararValorAlto implements Comparator<Informacion> {
 
 	@Override
-	public int compare(Datos o1, Datos o2) {
+	public int compare(Informacion o1, Informacion o2) {
 		int salida = 0;
 		if(o1.getValor()>o2.getValor()) {
 			salida = 1;

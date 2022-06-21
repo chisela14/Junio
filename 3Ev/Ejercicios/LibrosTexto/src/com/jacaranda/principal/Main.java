@@ -27,13 +27,14 @@ public class Main {
 	private static ArrayList<Provincia> provincias = new ArrayList<>();
 	private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	
-	private static final String MENU = "1. Mostrar editorial más usada en cada una de las provincias.\n"
-			+ "2. Mostrar editorial más usada en una provincia. \n"//por teclado
-			+ "3. "
-			+ "4. "
-			+ "5. "
-			+ "6. "
-			+ "7. "
+	private static final String MENU = "1. Mostrar  la editorial más usada en cada una de las provincias.\n"
+			+ "2. Mostrar la editorial más usada en una provincia.\n"//por teclado
+			+ "3. Mostrar la editorial más usada en una localidad.\n"//pedir localidad y pronvcia
+			+ "4. Mostrar la editorial más usada en una materia.\n"
+			+ "5. Listado de todos los libros usados en todas las materias en un centro(cod).\n"
+			+ "6. Listado de todos los libros usados en todas las materias en un centro(nombre).\\n"
+			+ "7. Listado de todos los libros usados en una materia en una localidad.\n"
+			//mostrando el nombre del centro y el libro correspondiente en cada curso que tenga dicha materia"
 			+ "8. Salir";
 
 	public static void main(String[] args) {
