@@ -3,14 +3,14 @@ package com.jacaranda.datos;
 import java.util.HashSet;
 import java.util.Objects;
 
-public class Provincia {
+public class Curso {
 	
 	private String nombre;
-	private HashSet<Localidad> localidades;
+	private HashSet<Materia> materias;
 	
-	public Provincia(String nombre) {
+	public Curso(String nombre) {
 		this.nombre = nombre;
-		this.localidades = new HashSet<>();
+		this.materias = new HashSet<>();
 	}
 
 	public String getNombre() {
@@ -21,15 +21,15 @@ public class Provincia {
 		this.nombre = nombre;
 	}
 
-	public HashSet<Localidad> getLocalidades() {
-		return localidades;
-	}
-	public void addLocalidad(Localidad l) {
-		this.localidades.add(l);
+	public HashSet<Materia> getMaterias() {
+		return materias;
 	}
 
-	public void setLocalidades(HashSet<Localidad> localidades) {
-		this.localidades = localidades;
+	public void setMaterias(HashSet<Materia> materias) {
+		this.materias = materias;
+	}
+	public void addMateria(Materia m) {
+		this.materias.add(m);
 	}
 
 	@Override
@@ -45,10 +45,9 @@ public class Provincia {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Provincia other = (Provincia) obj;
+		Curso other = (Curso) obj;
 		return Objects.equals(nombre, other.nombre);
 	}
-
 	
-
+	
 }
