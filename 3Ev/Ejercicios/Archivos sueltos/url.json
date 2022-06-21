@@ -1,0 +1,15 @@
+﻿{
+    "Url": "www.epdata.es/incidencia-acumulada-casos-coronavirus-ultimos-14-dias-personas-partir-60-anos-espana/fc77dcdb-db04-47f6-b5eb-3399ee396038",
+    "Titulo": "Incidencia acumulada de casos de coronavirus en los últimos 14 días en personas a partir de los 60 años en España",
+    "Datos": [
+        {
+            "Agno": 2022,
+            "Periodo": "Día 1 de abril",
+            "Parametro": "Día 1 de abril",
+            "Valor": 459.27,
+            "Estado": "Definitivo",
+            "Notas": ""
+        }
+    ],
+    "Patatas": "frityas"
+}
