@@ -3,7 +3,7 @@ package com.jacaranda.partituras;
 import java.util.LinkedList;
 import java.util.Objects;
 
-abstract class Partitura {
+public abstract class Partitura {
 	
 	private String nombre;
 	private LinkedList<Pentagrama> pentagramas;
