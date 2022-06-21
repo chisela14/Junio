@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.jacaranda.datos.ClaseMetrica;
 import com.jacaranda.datos.CompararValorAlto;
 import com.jacaranda.datos.CompararValorBajo;
@@ -20,7 +19,6 @@ import com.jacaranda.datos.LecturaJson;
 public class Main {
 	
 	public static Scanner teclado = new Scanner(System.in);
-	private static Gson gson = new Gson();
 	
 	private static final String MENU = "1. Mostrar el mejor día.\n2. Mostrar el mejor día a partir de un fecha."
 			+ "3. Mostrar el peor día\n4. Mostrar el peor día a partir de una fecha.\n"
@@ -30,11 +28,11 @@ public class Main {
 	public static void main(String[] args) {
 		
 		//Guardar información
-		String fichero = "ficheros//casos_acumulados.json"; // cambiar direccion barras windows-linux
+		String fichero = "ficheros\\casos_acumulados.json"; // cambiar direccion barras windows-linux
 		String fileContagios = leerFichero(fichero);
-		fichero = "ficheros//evolucion_casos_curados.json";
+		fichero = "ficheros\\evolucion_de_casos_curados.json";
 		String fileCurados = leerFichero(fichero);
-		fichero = "ficheros//muertos_por_coronavirus.json";
+		fichero = "ficheros\\muertos_por_coronavirus.json";
 		String fileMuertes = leerFichero(fichero);
 		//conseguir array de datos
 		ArrayList<Datos> contagios = conseguirDatos(fileContagios);
@@ -78,9 +76,13 @@ public class Main {
 				case(5):{
 					System.out.println("Introduce una fecha(yyyy-mm-dd): ");
 					LocalDate fecha = LocalDate.parse(teclado.nextLine());
-					System.out.println("Contagios de ese día: " + getValoresDia(contagios, fecha)+ System.lineSeparator());
-					System.out.println("Muertes de ese día: " + getValoresDia(muertes, fecha)+ System.lineSeparator());
-					System.out.println("Altas de ese día: " + getValoresDia(curados, fecha)+ System.lineSeparator());
+					try {
+						System.out.println("Contagios de ese día: " + getValoresDia(contagios, fecha)+ System.lineSeparator());
+						System.out.println("Muertes de ese día: " + getValoresDia(muertes, fecha)+ System.lineSeparator());
+						System.out.println("Altas de ese día: " + getValoresDia(curados, fecha)+ System.lineSeparator());
+					}catch(Exception e) {
+						System.out.println(e.getMessage());
+					}
 					break;
 				}
 				case(6):{//falta hacer método
@@ -95,16 +97,20 @@ public class Main {
 				}
 			}
 		}while(!salir);
-		
 	}
-	
 	public static String leerFichero(String f) {
+		String linea;
 		StringBuilder fichero = new StringBuilder();
-		try (BufferedReader br = new BufferedReader(new FileReader(f))) {
-		    String linea;
-		    while ((linea = br.readLine()) != null) {
+		try {
+			FileReader fr = new FileReader(f);
+			BufferedReader br = new BufferedReader(fr);
+		    linea=br.readLine();
+		    while (linea != null) {
 		        fichero.append(linea);
+		        linea=br.readLine();
 		    }
+		    fr.close();
+		    br.close();
 		} catch (FileNotFoundException e) {
 		    System.out.println(e.getMessage());
 		} catch (IOException e2) {
@@ -115,10 +121,12 @@ public class Main {
 	
 	public static ArrayList<Datos> conseguirDatos(String file) {
 		ArrayList<Datos> datos = new ArrayList<>();
+		Gson gson = new Gson();
 		LecturaJson l = gson.fromJson(file, LecturaJson.class);
 		for (ClaseMetrica aux : l.getDatos().getMetrica()) {
 			for (Datos d : aux.getDatos()) {
-				datos.add(d);	
+				datos.add(d);
+				//lista.addCorona(inf.getPeriodo(), inf.getAgno(), (int)inf.getValor());
 			}	
 		}
 		return datos;
@@ -168,7 +176,7 @@ public class Main {
 		Collections.sort(array2, comp);
 		return array2.get(0).getPeriodo().toString();
 	}
-	public static String getValoresDia(ArrayList<Datos> array, LocalDate fecha) {
+	public static String getValoresDia(ArrayList<Datos> array, LocalDate fecha) throws MainException {
 		Collections.sort(array);
 		Iterator<Datos> itr = array.iterator();
 		boolean fechaEncontrada = false;
@@ -180,12 +188,18 @@ public class Main {
 				fechaEncontrada = true;
 			}
 		}
-		
-		return salida.toString();
+		if(salida==null) {
+			throw new MainException("No has introducido una fecha correcta");
+		}
+		return salida;
 	}
-	//hacer
-	public static String media(ArrayList<Datos> array) {
-	
+	public static Double media(ArrayList<Datos> array) {
+		int numDatos = array.size();
+		double sumaValores = 0;
+		for(Datos d: array) {
+			sumaValores = sumaValores + d.getValor();
+		}
+		return sumaValores/numDatos;
 	}
 
 }
