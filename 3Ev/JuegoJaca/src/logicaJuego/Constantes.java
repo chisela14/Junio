@@ -33,6 +33,16 @@ public class Constantes {
 	public static final int MAGO_VELOCIDAD=6;
 	public static final int MAGO_MAGIA=7;
 	public static final int MAGO_FUERZA =4;	 	
+	
+	public static final int EMPATE = 0;	 
+	public static final int GANA_USAR_POCION = 1;	 
+	public static final int GANA_MUERTE = 2;	 
+	public static final int PIERDE_USAR_POCION = -1;
+	public static final int MUERE = -2;	
+	
+	public static final int VUELA = 0;	
+	public static final int ROMPE = 1;	
+	public static final int NO_ROMPE = -1;
 
 	
 }
